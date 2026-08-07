@@ -3,226 +3,838 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>మౌనరాగం - Where Silence Finds Words</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+Telugu:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+
 :root{
   --black:#0D0D0D;
   --gold:#D4AF37;
   --white:#FFFFFF;
   --grey:#A0A0A0;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--black);color:var(--white);font-family:'Noto Serif Telugu', serif;overflow-x:hidden;scroll-behavior:smooth}
-h1,h2,h3{font-family:'Cormorant Garamond', serif;font-weight:300}
-section{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:80px 20px;position:relative}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Noto Serif Telugu',serif;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:80px 20px;
+  position:relative;
+}
+
 
 /* LOADING */
-#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.loading-text{font-size:2.5rem;color:var(--gold);opacity:0;animation:fadeInOut 2s infinite}
-@keyframes fadeInOut{0%,100%{opacity:0}50%{opacity:1}}
+
+#loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:var(--black);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.loading-text{
+  font-size:2.5rem;
+  color:var(--gold);
+  opacity:0;
+  animation:fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut{
+  0%,100%{opacity:0}
+  50%{opacity:1}
+}
+
 
 /* RAIN + FOG */
-#rain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.drop{position:absolute;width:1px;height:20px;background:linear-gradient(transparent,rgba(212,175,55,0.3));animation:fall linear infinite}
-@keyframes fall{to{transform:translateY(100vh)}}
-#fog{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,0.05) 0%,transparent 70%);animation:fogMove 20s infinite alternate;z-index:0}
-@keyframes fogMove{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
+
+#rain{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+.drop{
+  position:absolute;
+  width:1px;
+  height:20px;
+  background:linear-gradient(
+    transparent,
+    rgba(212,175,55,0.3)
+  );
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh);
+  }
+}
+
+#fog{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(
+    circle at 50% 50%,
+    rgba(212,175,55,0.05) 0%,
+    transparent 70%
+  );
+  animation:fogMove 20s infinite alternate;
+  z-index:0;
+}
+
+@keyframes fogMove{
+  0%{transform:translateX(-10%)}
+  100%{transform:translateX(10%)}
+}
+
 
 /* INTRO */
-#intro{z-index:2;text-align:center}
-.logo{width:200px;margin-bottom:30px;filter:drop-shadow(0 0 20px var(--gold));animation:glow 3s infinite}
-@keyframes glow{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}50%{filter:drop-shadow(0 0 40px var(--gold))}}
-.intro-text{font-size:1.8rem;line-height:2.5rem;margin:30px 0;color:var(--grey)}
-.enter-btn{padding:15px 50px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:1.2rem;cursor:pointer;transition:all 0.4s;font-family:'Cormorant Garamond'}
-.enter-btn:hover{background:var(--gold);color:var(--black);box-shadow:0 0 30px var(--gold)}
+
+#intro{
+  z-index:2;
+  text-align:center;
+}
+
+.logo{
+  width:200px;
+  margin-bottom:30px;
+  filter:drop-shadow(0 0 20px var(--gold));
+  animation:glow 3s infinite;
+}
+
+@keyframes glow{
+  0%,100%{
+    filter:drop-shadow(0 0 20px var(--gold))
+  }
+
+  50%{
+    filter:drop-shadow(0 0 40px var(--gold))
+  }
+}
+
+.intro-text{
+  font-size:1.8rem;
+  line-height:2.5rem;
+  margin:30px 0;
+  color:var(--grey);
+}
+
+.enter-btn{
+  padding:15px 50px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:all 0.4s;
+  font-family:'Cormorant Garamond';
+}
+
+.enter-btn:hover{
+  background:var(--gold);
+  color:var(--black);
+  box-shadow:0 0 30px var(--gold);
+}
+
 
 /* HERO */
-#hero h1{font-size:5rem;color:var(--gold);text-align:center;animation:fadeInUp 1s}
-#hero p{font-size:1.3rem;color:var(--grey);text-align:center;max-width:600px;margin:20px auto;line-height:2rem}
-.subtitle{font-family:'Cormorant Garamond';font-size:1.5rem;color:var(--gold);margin-bottom:20px}
-.scroll-down{position:absolute;bottom:30px;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+#hero h1{
+  font-size:5rem;
+  color:var(--gold);
+  text-align:center;
+  animation:fadeInUp 1s;
+}
+
+#hero p{
+  font-size:1.3rem;
+  color:var(--grey);
+  text-align:center;
+  max-width:600px;
+  margin:20px auto;
+  line-height:2rem;
+}
+
+.subtitle{
+  font-family:'Cormorant Garamond';
+  font-size:1.5rem;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.scroll-down{
+  position:absolute;
+  bottom:30px;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
+}
+
 
 /* GLASS CARDS */
-.glass-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,0.2);border-radius:15px;padding:40px;margin:20px;max-width:500px;transition:transform 0.5s,box-shadow 0.5s;opacity:0;transform:translateY(50px)}
-.glass-card.show{opacity:1;transform:translateY(0)}
-.glass-card:hover{transform:translateY(-10px);box-shadow:0 10px 40px rgba(212,175,55,0.2)}
-.quote{font-size:1.4rem;line-height:2.2rem;color:var(--white)}
+
+.glass-card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(212,175,55,0.2);
+  border-radius:15px;
+  padding:40px;
+  margin:20px;
+  max-width:500px;
+  transition:transform 0.5s,box-shadow 0.5s;
+  opacity:0;
+  transform:translateY(50px);
+}
+
+.glass-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.glass-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 10px 40px rgba(212,175,55,0.2);
+}
+
+.quote{
+  font-size:1.4rem;
+  line-height:2.2rem;
+  color:var(--white);
+}
+
+
+/* NEW WORDS SECTION */
+
+#words{
+  text-align:center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212,175,55,0.07),
+      transparent 65%
+    );
+}
+
+.words-title{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:3rem;
+  font-weight:400;
+  color:var(--gold);
+  margin-bottom:50px;
+}
+
+.words-content{
+  max-width:750px;
+  padding:60px 45px;
+  background:rgba(255,255,255,0.035);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(212,175,55,0.22);
+  border-radius:20px;
+  box-shadow:0 0 50px rgba(212,175,55,0.06);
+  text-align:center;
+  transition:all 0.5s ease;
+}
+
+.words-content:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 60px rgba(212,175,55,0.12);
+}
+
+.words-content p{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:1.45rem;
+  line-height:2.6;
+  color:var(--white);
+}
+
+.words-signature{
+  margin-top:40px;
+  color:var(--gold);
+  font-size:1.15rem;
+}
+
 
 /* BOOKS */
-.book-grid{display:flex;gap:30px;flex-wrap:wrap;justify-content:center}
-.book-card{border:1px solid var(--gold);padding:30px;width:250px;text-align:center;transition:all 0.4s}
-.book-card:hover{box-shadow:0 0 30px var(--gold)}
+
+.book-grid{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.book-card{
+  border:1px solid var(--gold);
+  padding:30px;
+  width:250px;
+  text-align:center;
+  transition:all 0.4s;
+}
+
+.book-card:hover{
+  box-shadow:0 0 30px var(--gold);
+}
+
 
 /* CONTACT */
-.social-links{display:flex;gap:30px;margin-top:30px}
-.social-links a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:0.3s}
-.social-links a:hover{border-color:var(--gold)}
+
+.social-links{
+  display:flex;
+  gap:30px;
+  margin-top:30px;
+}
+
+.social-links a{
+  color:var(--gold);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:0.3s;
+}
+
+.social-links a:hover{
+  border-color:var(--gold);
+}
+
 
 /* FOOTER */
-footer{background:#000;padding:60px 20px;text-align:center;border-top:1px solid rgba(212,175,55,0.2)}
-footer p{color:var(--grey);margin:10px 0}
+
+footer{
+  background:#000;
+  padding:60px 20px;
+  text-align:center;
+  border-top:1px solid rgba(212,175,55,0.2);
+}
+
+footer p{
+  color:var(--grey);
+  margin:10px 0;
+}
+
 
 /* PARTICLES */
-.particle{position:fixed;width:2px;height:2px;background:var(--gold);border-radius:50%;pointer-events:none;animation:float 10s infinite}
-@keyframes float{0%{transform:translateY(0);opacity:0}50%{opacity:1}100%{transform:translateY(-100vh);opacity:0}}
+
+.particle{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:var(--gold);
+  border-radius:50%;
+  pointer-events:none;
+  animation:float 10s infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0);
+    opacity:0;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-100vh);
+    opacity:0;
+  }
+}
+
+
+/* MOBILE */
 
 @media(max-width:768px){
-  #hero h1{font-size:3rem}
- .intro-text{font-size:1.3rem}
+
+  #hero h1{
+    font-size:3rem;
+  }
+
+  .intro-text{
+    font-size:1.3rem;
+  }
+
+  .words-title{
+    font-size:2.3rem;
+  }
+
+  .words-content{
+    padding:40px 22px;
+  }
+
+  .words-content p{
+    font-size:1.15rem;
+    line-height:2.3;
+  }
+
+  .social-links{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+}
+
 </style>
 </head>
+
+
 <body>
 
+
 <!-- LOADING -->
+
 <div id="loader">
-  <div class="loading-text" id="loadingWord">Loading...</div>
+  <div class="loading-text" id="loadingWord">
+    Loading...
+  </div>
 </div>
 
+
 <!-- RAIN + FOG -->
+
 <div id="rain"></div>
 <div id="fog"></div>
 
+
 <!-- PARTICLES -->
+
 <div id="particles"></div>
 
+
 <!-- INTRO -->
+
 <section id="intro">
-  <img src="YOUR_LOGO_URL_HERE" alt="Mouna Ragam Logo" class="logo">
+
+  <img
+    src="YOUR_LOGO_URL_HERE"
+    alt="Mouna Ragam Logo"
+    class="logo"
+  >
+
   <div class="intro-text">
+
     కొన్ని మౌనాలు...<br>
     వినిపించవు.<br><br>
     అనుభవించాలి.
+
   </div>
-  <div style="font-size:1.2rem;margin:20px 0;">✒️ మౌనరాగం</div>
-  <button class="enter-btn" onclick="enterSite()">ENTER</button>
+
+  <div style="font-size:1.2rem;margin:20px 0;">
+    ✒️ మౌనరాగం
+  </div>
+
+  <button
+    class="enter-btn"
+    onclick="enterSite()"
+  >
+    ENTER
+  </button>
+
 </section>
+
 
 <!-- MAIN CONTENT -->
+
 <div id="main" style="display:none">
 
+
 <!-- HERO -->
+
 <section id="hero">
+
   <h1>మౌనరాగం</h1>
-  <div class="subtitle">Where Silence Finds Words</div>
-  <p>Not every feeling can be spoken.<br>
-  Not every tear can be explained.<br>
-  Some emotions are born in silence<br>
-  and live forever through words.</p>
-  <div class="scroll-down">↓ Scroll</div>
+
+  <div class="subtitle">
+    Where Silence Finds Words
+  </div>
+
+  <p>
+    Not every feeling can be spoken.<br>
+    Not every tear can be explained.<br>
+    Some emotions are born in silence<br>
+    and live forever through words.
+  </p>
+
+  <div class="scroll-down">
+    ↓ Scroll
+  </div>
+
 </section>
 
+
 <!-- ABOUT -->
+
 <section id="about">
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">నా గురించి</h2>
+
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
+    నా గురించి
+  </h2>
+
   <div class="glass-card">
+
     <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
+
       నేను రచయితను కాదు...<br><br>
+
       మౌనానికి<br>
       పదాలు ఇచ్చే<br>
       ఒక మనిషిని.
+
     </p>
-    <p style="text-align:center;margin-top:20px;font-size:1.2rem;color:var(--gold)">✒️ మౌనరాగం</p>
+
+    <p style="text-align:center;margin-top:20px;font-size:1.2rem;color:var(--gold)">
+      ✒️ మౌనరాగం
+    </p>
+
   </div>
+
 </section>
+
+
+<!-- WORDS / EMOTIONS -->
+
+<section id="words">
+
+  <h2 class="words-title">
+    మాటల్లో చెప్పలేనివి
+  </h2>
+
+  <div class="words-content">
+
+    <p>
+
+      కొన్ని భావాలకు మాటలు ఉండవు...<br>
+
+      కొన్ని కన్నీళ్లకు<br>
+      కారణాలు చెప్పలేం...<br><br>
+
+      కొన్ని జ్ఞాపకాలు<br>
+      మనతో మాట్లాడవు...<br>
+
+      కానీ మన మౌనంలో<br>
+      ఎప్పటికీ జీవిస్తాయి.
+
+    </p>
+
+    <div class="words-signature">
+      ✒️ మౌనరాగం
+    </div>
+
+  </div>
+
+</section>
+
 
 <!-- QUOTES -->
+
 <section id="quotes">
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:50px">Featured Quotes</h2>
-  <div class="glass-card"><p class="quote">"మితి మీరిన ఇష్టం...<br>భయంకరమైన వ్యసనం."</p></div>
-  <div class="glass-card"><p class="quote">"నేను ఎవరికీ చెప్పుకోలేని<br>ఒక అందమైన రహస్యం నువ్వు."</p></div>
-  <div class="glass-card"><p class="quote">"మంచి నీరు తాగే గొంతు<br>అబద్ధం చెప్పొచ్చు...<br><br>ఉప్పు నీరు కార్చే కళ్ళు<br>అబద్ధం చెప్పవు."</p></div>
-  <div class="glass-card"><p class="quote">"పగటి పూట నిద్ర వస్తుందంటే<br>దేహం అలసిపోయిందని అర్థం...<br><br>రాత్రి పూట నిద్ర రాకపోతే<br>మనసు బలహీనమైందని అర్థం."</p></div>
+
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:50px">
+    Featured Quotes
+  </h2>
+
+  <div class="glass-card">
+    <p class="quote">
+      "మితి మీరిన ఇష్టం...<br>
+      భయంకరమైన వ్యసనం."
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <p class="quote">
+      "నేను ఎవరికీ చెప్పుకోలేని<br>
+      ఒక అందమైన రహస్యం నువ్వు."
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <p class="quote">
+      "మంచి నీరు తాగే గొంతు<br>
+      అబద్ధం చెప్పొచ్చు...<br><br>
+
+      ఉప్పు నీరు కార్చే కళ్ళు<br>
+      అబద్ధం చెప్పవు."
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <p class="quote">
+      "పగటి పూట నిద్ర వస్తుందంటే<br>
+      దేహం అలసిపోయిందని అర్థం...<br><br>
+
+      రాత్రి పూట నిద్ర రాకపోతే<br>
+      మనసు బలహీనమైందని అర్థం."
+    </p>
+  </div>
+
 </section>
+
 
 <!-- POETRY -->
+
 <section id="poetry">
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Poetry</h2>
+
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
+    Poetry
+  </h2>
+
   <div class="glass-card">
-    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">Featured Poem Preview Here</p>
-    <button class="enter-btn" style="margin-top:20px">Read More</button>
+
+    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
+
+      Featured Poem Preview Here
+
+    </p>
+
+    <button
+      class="enter-btn"
+      style="margin-top:20px"
+    >
+      Read More
+    </button>
+
   </div>
+
 </section>
+
 
 <!-- BOOKS -->
+
 <section id="books">
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Coming Soon</h2>
+
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
+    Coming Soon
+  </h2>
+
   <div class="book-grid">
-    <div class="book-card"><h3>మౌనరాగం</h3></div>
-    <div class="book-card"><h3>వాన... నువ్వు... నేను</h3></div>
-    <div class="book-card"><h3>చివరి పేజీ</h3></div>
+
+    <div class="book-card">
+      <h3>మౌనరాగం</h3>
+    </div>
+
+    <div class="book-card">
+      <h3>వాన... నువ్వు... నేను</h3>
+    </div>
+
+    <div class="book-card">
+      <h3>చివరి పేజీ</h3>
+    </div>
+
   </div>
+
 </section>
 
+
 <!-- CONTACT -->
+
 <section id="contact">
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Contact</h2>
+
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
+    Contact
+  </h2>
+
   <div class="social-links">
+
     <a href="#">Instagram</a>
     <a href="#">Facebook</a>
     <a href="#">YouTube</a>
     <a href="mailto:">Email</a>
+
   </div>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
-  <p>"కొన్ని భావాలు...<br>చదవడానికి కావు.<br>అనుభవించడానికి."</p>
-  <p style="color:var(--gold);margin-top:20px">✒️ మౌనరాగం</p>
-  <p>Where Silence Finds Words</p>
-  <p style="font-size:0.9rem">© 2026 Mouna Ragam</p>
+
+  <p>
+    "కొన్ని భావాలు...<br>
+    చదవడానికి కావు.<br>
+    అనుభవించడానికి."
+  </p>
+
+  <p style="color:var(--gold);margin-top:20px">
+    ✒️ మౌనరాగం
+  </p>
+
+  <p>
+    Where Silence Finds Words
+  </p>
+
+  <p style="font-size:0.9rem">
+    © 2026 Mouna Ragam
+  </p>
+
 </footer>
+
 
 </div>
 
+
 <script>
+
+
 // LOADING SEQUENCE
-const words = ["Loading...","Memories...","Pain...","Love...","Silence..."];
-let i=0;
-const loaderInterval = setInterval(()=>{
-  document.getElementById('loadingWord').innerText = words[i];
+
+const words = [
+  "Loading...",
+  "Memories...",
+  "Pain...",
+  "Love...",
+  "Silence..."
+];
+
+let i = 0;
+
+const loaderInterval = setInterval(() => {
+
+  document.getElementById("loadingWord").innerText = words[i];
+
   i++;
-  if(i>=words.length){
+
+  if(i >= words.length){
+
     clearInterval(loaderInterval);
-    setTimeout(()=>{document.getElementById('loader').style.display='none'},1500);
+
+    setTimeout(() => {
+
+      document.getElementById("loader").style.display = "none";
+
+    },1500);
+
   }
+
 },1500);
 
+
 // ENTER BUTTON
+
 function enterSite(){
-  document.getElementById('main').style.display='block';
-  document.getElementById('intro').style.opacity=0;
-  setTimeout(()=>{document.getElementById('intro').style.display='none'},1000);
+
+  document.getElementById("main").style.display = "block";
+
+  document.getElementById("intro").style.opacity = 0;
+
+  setTimeout(() => {
+
+    document.getElementById("intro").style.display = "none";
+
+  },1000);
+
 }
+
 
 // RAIN
-for(let i=0;i<100;i++){
-  let drop = document.createElement('div');
-  drop.className='drop';
-  drop.style.left=Math.random()*100+'%';
-  drop.style.animationDuration=0.5+Math.random()+'s';
-  drop.style.animationDelay=Math.random()*2+'s';
-  document.getElementById('rain').appendChild(drop);
+
+for(let i = 0; i < 100; i++){
+
+  let drop = document.createElement("div");
+
+  drop.className = "drop";
+
+  drop.style.left =
+    Math.random() * 100 + "%";
+
+  drop.style.animationDuration =
+    0.5 + Math.random() + "s";
+
+  drop.style.animationDelay =
+    Math.random() * 2 + "s";
+
+  document.getElementById("rain")
+    .appendChild(drop);
+
 }
+
 
 // PARTICLES
-for(let i=0;i<30;i++){
-  let p = document.createElement('div');
-  p.className='particle';
-  p.style.left=Math.random()*100+'%';
-  p.style.top=Math.random()*100+'%';
-  p.style.animationDelay=Math.random()*10+'s';
-  document.getElementById('particles').appendChild(p);
+
+for(let i = 0; i < 30; i++){
+
+  let p = document.createElement("div");
+
+  p.className = "particle";
+
+  p.style.left =
+    Math.random() * 100 + "%";
+
+  p.style.top =
+    Math.random() * 100 + "%";
+
+  p.style.animationDelay =
+    Math.random() * 10 + "s";
+
+  document.getElementById("particles")
+    .appendChild(p);
+
 }
 
+
 // SCROLL ANIMATIONS
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add('show');
-  })
-},{threshold:0.2})
-document.querySelectorAll('.glass-card').forEach(card=>observer.observe(card));
+
+const observer =
+  new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("show");
+
+      }
+
+    });
+
+  },{threshold:0.2});
+
+
+document
+  .querySelectorAll(".glass-card")
+  .forEach(card => observer.observe(card));
+
+
 </script>
+
 </body>
 </html>
