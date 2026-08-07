@@ -3,1346 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>మౌనరాగం - Where Silence Finds Words</title>
-
+<title>మౌనరాగం — Where Silence Finds Words</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+Telugu:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-  --black:#0D0D0D;
-  --gold:#D4AF37;
-  --white:#FFFFFF;
-  --grey:#A0A0A0;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--black);
-  color:var(--white);
-  font-family:'Noto Serif Telugu',serif;
-  overflow-x:hidden;
-}
-
-h1,h2,h3{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:300;
-}
-
-section{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  padding:80px 20px;
-  position:relative;
-}
-
+:root{--black:#070707;--gold:#d4af37;--white:#fff;--grey:#aaa;--glass:rgba(255,255,255,.055)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Noto Serif Telugu',serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond','Noto Serif Telugu',serif;font-weight:300}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:90px 20px;position:relative;z-index:2}
 
 /* LOADER */
+#loader{position:fixed;inset:0;background:#050505;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.loading-text{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold);letter-spacing:3px;animation:fadeWord 1.5s ease-in-out}
+.loading-line{width:120px;height:1px;background:rgba(212,175,55,.5);margin-top:22px}
+@keyframes fadeWord{0%{opacity:0;transform:translateY(8px)}50%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-8px)}}
 
-#loader{
-  position:fixed;
-  inset:0;
-  background:var(--black);
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
-
-.loading-text{
-  font-size:2.5rem;
-  color:var(--gold);
-  animation:fadeInOut 2s infinite;
-}
-
-@keyframes fadeInOut{
-  0%,100%{opacity:0}
-  50%{opacity:1}
-}
-
-
-/* RAIN */
-
-#rain{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-}
-
-.drop{
-  position:absolute;
-  width:1px;
-  height:20px;
-  background:linear-gradient(
-    transparent,
-    rgba(212,175,55,0.3)
-  );
-  animation:fall linear infinite;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(100vh);
-  }
-}
-
-
-/* FOG */
-
-#fog{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(
-    circle at 50% 50%,
-    rgba(212,175,55,0.05),
-    transparent 70%
-  );
-  animation:fogMove 20s infinite alternate;
-  z-index:0;
-  pointer-events:none;
-}
-
-@keyframes fogMove{
-  from{transform:translateX(-10%)}
-  to{transform:translateX(10%)}
-}
-
-
-/* PARTICLES */
-
-#particles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-}
-
-.particle{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:var(--gold);
-  border-radius:50%;
-  animation:float 10s infinite;
-}
-
-@keyframes float{
-  0%{
-    transform:translateY(0);
-    opacity:0;
-  }
-
-  50%{
-    opacity:1;
-  }
-
-  100%{
-    transform:translateY(-100vh);
-    opacity:0;
-  }
-}
-
+/* RAIN / FOG */
+#rain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.65}
+.drop{position:absolute;width:1px;height:20px;background:linear-gradient(transparent,rgba(190,210,220,.35));animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh)}}
+#fog{position:fixed;inset:-10%;pointer-events:none;z-index:0;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,.06),transparent 65%);animation:fogMove 18s ease-in-out infinite alternate}
+@keyframes fogMove{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
 
 /* INTRO */
+#intro{text-align:center;transition:opacity 1s ease}
+.logo{width:180px;max-width:65vw;margin-bottom:28px;filter:drop-shadow(0 0 22px rgba(212,175,55,.65));animation:glow 3s infinite}
+@keyframes glow{50%{filter:drop-shadow(0 0 38px rgba(212,175,55,.85))}}
+.intro-text{font-size:1.65rem;line-height:2.4rem;color:#ddd;margin:20px 0 30px}
+.enter-btn{padding:13px 52px;border:1px solid var(--gold);background:rgba(0,0,0,.25);color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.25rem;letter-spacing:3px;cursor:pointer;transition:.4s}
+.enter-btn:hover{background:var(--gold);color:#070707;box-shadow:0 0 30px rgba(212,175,55,.45)}
+.hint{margin-top:18px;color:#777;font-size:.85rem}
 
-#intro{
-  z-index:2;
-  text-align:center;
-}
-
-.logo{
-  width:200px;
-  max-width:70%;
-  margin-bottom:30px;
-  filter:drop-shadow(0 0 20px var(--gold));
-  animation:glow 3s infinite;
-}
-
-@keyframes glow{
-  0%,100%{
-    filter:drop-shadow(0 0 20px var(--gold));
-  }
-
-  50%{
-    filter:drop-shadow(0 0 40px var(--gold));
-  }
-}
-
-.intro-text{
-  font-size:1.8rem;
-  line-height:2.5rem;
-  margin:30px 0;
-  color:var(--grey);
-}
-
-.enter-btn{
-  padding:15px 50px;
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--gold);
-  font-size:1.2rem;
-  cursor:pointer;
-  transition:.4s;
-  font-family:'Cormorant Garamond';
-}
-
-.enter-btn:hover{
-  background:var(--gold);
-  color:var(--black);
-  box-shadow:0 0 30px var(--gold);
-}
-
+/* MUSIC CONTROL */
+#musicControl{position:fixed;right:22px;bottom:22px;z-index:1000;display:none}
+.music-btn{border:1px solid rgba(212,175,55,.55);background:rgba(7,7,7,.78);backdrop-filter:blur(12px);color:var(--gold);border-radius:50px;padding:11px 17px;cursor:pointer;font-family:'Noto Serif Telugu',serif;box-shadow:0 0 20px rgba(212,175,55,.12)}
+.music-btn span{margin-right:6px}
 
 /* HERO */
+#hero{text-align:center}
+#hero h1{font-size:clamp(4rem,10vw,7rem);color:var(--gold);letter-spacing:2px}
+.subtitle{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin:8px 0 22px}
+.hero-copy{max-width:680px;color:#aaa;font-size:1.15rem;line-height:2.1rem}
+.scroll-down{position:absolute;bottom:28px;color:#777;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translateY(9px)}}
 
-#hero h1{
-  font-size:5rem;
-  color:var(--gold);
-  text-align:center;
-}
-
-#hero p{
-  font-size:1.3rem;
-  color:var(--grey);
-  text-align:center;
-  max-width:650px;
-  margin:20px auto;
-  line-height:2rem;
-}
-
-.subtitle{
-  font-family:'Cormorant Garamond';
-  font-size:1.5rem;
-  color:var(--gold);
-  margin-bottom:20px;
-}
-
-.scroll-down{
-  position:absolute;
-  bottom:30px;
-  animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(10px)}
-}
-
-
-/* ABOUT */
-
-.glass-card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(212,175,55,0.2);
-  border-radius:15px;
-  padding:40px;
-  margin:20px;
-  max-width:650px;
-  width:calc(100% - 40px);
-  transition:.5s;
-  opacity:0;
-  transform:translateY(50px);
-}
-
-.glass-card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.glass-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 10px 40px rgba(212,175,55,.18);
-}
-
-
-/* WORDS */
-
-#words{
-  text-align:center;
-  background:
-  radial-gradient(
-    circle at center,
-    rgba(212,175,55,.07),
-    transparent 65%
-  );
-}
-
-.words-title{
-  font-family:'Noto Serif Telugu',serif;
-  font-size:3rem;
-  font-weight:400;
-  color:var(--gold);
-  margin-bottom:50px;
-}
-
-.words-content{
-  max-width:750px;
-  padding:60px 45px;
-  background:rgba(255,255,255,.035);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(212,175,55,.22);
-  border-radius:20px;
-  text-align:center;
-}
-
-.words-content p{
-  font-size:1.45rem;
-  line-height:2.6;
-}
-
-.words-signature{
-  margin-top:40px;
-  color:var(--gold);
-}
-
+/* COMMON */
+.section-title{font-size:3rem;color:var(--gold);margin-bottom:42px;text-align:center}
+.glass-card{width:min(650px,92vw);background:var(--glass);backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,.2);border-radius:18px;padding:42px 30px;margin:15px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.25);opacity:0;transform:translateY(35px);transition:opacity .8s,transform .8s}
+.glass-card.show{opacity:1;transform:translateY(0)}
+.words{font-size:1.35rem;line-height:2.5rem;color:#ddd}
+.words-signature{margin-top:22px;color:var(--gold)}
 
 /* QUOTES */
-
-#my-quotes{
-  background:
-  radial-gradient(
-    circle at 50% 30%,
-    rgba(212,175,55,.06),
-    transparent 60%
-  );
-}
-
-.section-title{
-  font-family:'Noto Serif Telugu',serif;
-  font-size:3rem;
-  color:var(--gold);
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.section-subtitle{
-  color:var(--grey);
-  text-align:center;
-  margin-bottom:50px;
-}
-
-.quote-grid{
-  width:100%;
-  max-width:1100px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
-
-.quote-card{
-  position:relative;
-  padding:40px 35px;
-  min-height:230px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  text-align:center;
-
-  background:rgba(255,255,255,.035);
-  backdrop-filter:blur(12px);
-
-  border:1px solid rgba(212,175,55,.18);
-  border-radius:18px;
-
-  transition:.5s;
-
-  opacity:0;
-  transform:translateY(40px);
-}
-
-.quote-card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.quote-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(212,175,55,.55);
-  box-shadow:0 15px 45px rgba(212,175,55,.12);
-}
-
-.quote-category{
-  color:var(--gold);
-  font-size:1rem;
-  margin-bottom:22px;
-}
-
-.quote-text{
-  font-size:1.35rem;
-  line-height:2.3;
-}
-
-.quote-mark{
-  position:absolute;
-  top:10px;
-  left:20px;
-  font-family:Georgia,serif;
-  font-size:4rem;
-  color:rgba(212,175,55,.12);
-}
-
-
-/* SPECIAL */
-
-#special{
-  background:#0D0D0D;
-}
-
-.special-title{
-  font-family:'Noto Serif Telugu',serif;
-  font-size:2.8rem;
-  color:var(--gold);
-  text-align:center;
-  margin-bottom:50px;
-}
-
-.special-grid{
-  max-width:900px;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  gap:25px;
-}
-
-.special-card{
-  padding:45px 35px;
-  text-align:center;
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(212,175,55,.07),
-    rgba(255,255,255,.025)
-  );
-
-  border-top:1px solid rgba(212,175,55,.35);
-  border-bottom:1px solid rgba(212,175,55,.15);
-
-  border-radius:16px;
-
-  transition:.5s;
-
-  opacity:0;
-  transform:translateY(40px);
-}
-
-.special-card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.special-card:hover{
-  box-shadow:0 10px 50px rgba(212,175,55,.12);
-  transform:translateY(-5px);
-}
-
-.special-card p{
-  font-size:1.45rem;
-  line-height:2.4;
-}
-
+.quote-grid,.special-grid,.poetry-grid{width:min(1100px,95vw);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.quote-card,.special-card,.poetry-card{background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));border:1px solid rgba(212,175,55,.22);border-radius:16px;padding:30px 24px;text-align:center;min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.45s}
+.quote-card:hover,.special-card:hover,.poetry-card:hover{transform:translateY(-7px);border-color:rgba(212,175,55,.6);box-shadow:0 15px 45px rgba(212,175,55,.12)}
+.quote-mark{font-family:Georgia,serif;font-size:3.5rem;color:var(--gold);line-height:.8}
+.quote-category,.poetry-category{color:var(--gold);font-size:1rem;margin:12px 0}
+.quote-text,.special-card p,.poetry-card p{font-size:1.15rem;line-height:2rem;color:#eee}
+.special-card{min-height:220px}
+.poetry-card{min-height:250px}
+.poetry-icon{font-size:1.8rem;color:var(--gold)}
 
 /* FINAL */
+#final{text-align:center;background:radial-gradient(circle,rgba(212,175,55,.07),transparent 55%)}
+.final-line{font-size:clamp(2rem,6vw,4rem);line-height:1.8;color:var(--gold);text-shadow:0 0 25px rgba(212,175,55,.18)}
 
-#final-line{
-  min-height:80vh;
-  text-align:center;
+/* BOOKS / CONTACT */
+.book-grid{display:flex;gap:25px;flex-wrap:wrap;justify-content:center}
+.book-card{width:250px;min-height:180px;border:1px solid rgba(212,175,55,.6);display:flex;align-items:center;justify-content:center;padding:25px;text-align:center;transition:.4s}
+.book-card:hover{transform:translateY(-8px);box-shadow:0 0 28px rgba(212,175,55,.18)}
+.book-card h3{font-size:1.5rem;color:#eee}
+.social-links{display:flex;gap:25px;flex-wrap:wrap;justify-content:center}
+.social-links a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;padding:8px}
+.social-links a:hover{border-color:var(--gold)}
+footer{background:#020202;padding:65px 20px;text-align:center;border-top:1px solid rgba(212,175,55,.18);position:relative;z-index:2}
+footer p{color:#888;margin:9px 0;line-height:1.8}
+footer .gold{color:var(--gold)}
+
+@media(max-width:600px){
+ section{padding:75px 15px}
+ .intro-text{font-size:1.3rem}
+ .section-title{font-size:2.4rem}
+ .quote-grid,.special-grid,.poetry-grid{grid-template-columns:1fr}
+ #musicControl{right:12px;bottom:12px}
 }
-
-.final-line{
-  font-family:'Noto Serif Telugu',serif;
-  font-size:2.2rem;
-  color:var(--gold);
-  line-height:2.2;
-  max-width:800px;
-}
-
-.final-signature{
-  margin-top:50px;
-  color:var(--grey);
-}
-
-
-/* BOOKS */
-
-.book-grid{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.book-card{
-  border:1px solid var(--gold);
-  padding:30px;
-  width:250px;
-  text-align:center;
-  transition:.4s;
-}
-
-.book-card:hover{
-  box-shadow:0 0 30px var(--gold);
-}
-
-
-/* CONTACT */
-
-.social-links{
-  display:flex;
-  gap:30px;
-  margin-top:30px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.social-links a{
-  color:var(--gold);
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-}
-
-.social-links a:hover{
-  border-color:var(--gold);
-}
-
-
-/* FOOTER */
-
-footer{
-  background:#000;
-  padding:60px 20px;
-  text-align:center;
-  border-top:1px solid rgba(212,175,55,.2);
-}
-
-footer p{
-  color:var(--grey);
-  margin:10px 0;
-}
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  #hero h1{
-    font-size:3rem;
-  }
-
-  .intro-text{
-    font-size:1.3rem;
-  }
-
-  .words-title,
-  .section-title{
-    font-size:2.3rem;
-  }
-
-  .words-content{
-    padding:40px 22px;
-  }
-
-  .words-content p{
-    font-size:1.15rem;
-  }
-
-  .quote-grid{
-    grid-template-columns:1fr;
-  }
-
-  .quote-card{
-    min-height:210px;
-    padding:35px 22px;
-  }
-
-  .quote-text{
-    font-size:1.15rem;
-  }
-
-  .special-title{
-    font-size:2.2rem;
-  }
-
-  .special-card{
-    padding:35px 20px;
-  }
-
-  .special-card p{
-    font-size:1.15rem;
-  }
-
-  .final-line{
-    font-size:1.6rem;
-  }
-
-}
-
-
-/* =========================
-   POETRY SECTION
-========================= */
-
-#poetry{
-  background:radial-gradient(circle at center,rgba(212,175,55,.06),transparent 65%);
-}
-
-.poetry-grid{
-  width:100%;
-  max-width:1100px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
-
-.poetry-card{
-  padding:45px 30px;
-  min-height:260px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  background:rgba(255,255,255,.035);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(212,175,55,.18);
-  border-radius:18px;
-  transition:transform .5s ease,border-color .5s ease,box-shadow .5s ease;
-  opacity:0;
-  transform:translateY(40px);
-}
-
-.poetry-card.show{opacity:1;transform:translateY(0);}
-
-.poetry-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(212,175,55,.6);
-  box-shadow:0 15px 45px rgba(212,175,55,.15);
-}
-
-.poetry-icon{font-size:1.8rem;color:var(--gold);margin-bottom:18px;}
-.poetry-category{color:var(--gold);font-size:1rem;margin-bottom:20px;}
-.poetry-card p{font-family:'Noto Serif Telugu',serif;font-size:1.3rem;line-height:2.2;color:var(--white);}
-
-.featured-poem{
-  width:100%;
-  max-width:800px;
-  margin-top:70px;
-  padding:60px 35px;
-  text-align:center;
-  background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(255,255,255,.025));
-  border-top:1px solid rgba(212,175,55,.4);
-  border-bottom:1px solid rgba(212,175,55,.2);
-  border-radius:20px;
-}
-
-.featured-label{color:var(--gold);font-size:1.1rem;margin-bottom:35px;}
-.featured-poem p{font-family:'Noto Serif Telugu',serif;font-size:1.6rem;line-height:2.5;color:var(--white);}
-.featured-signature{margin-top:35px;color:var(--gold);}
-
-@media(max-width:768px){
-  .poetry-grid{grid-template-columns:1fr;gap:20px;}
-  .poetry-card{min-height:230px;padding:35px 20px;}
-  .poetry-card p{font-size:1.15rem;line-height:2;}
-  .featured-poem{padding:45px 20px;margin-top:50px;}
-  .featured-poem p{font-size:1.25rem;line-height:2.2;}
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- LOADER -->
-
 <div id="loader">
-
-  <div class="loading-text" id="loadingWord">
-    Loading...
-  </div>
-
+  <div class="loading-text" id="loadingWord">Loading...</div>
+  <div class="loading-line"></div>
 </div>
 
-
-<!-- RAIN -->
-
+<div id="fog"></div>
 <div id="rain"></div>
 
+<audio id="rainAudio" preload="auto" loop>
+  <source src="liecio-light-rain-109591.mp3" type="audio/mpeg">
+</audio>
 
-<!-- FOG -->
+<audio id="themeAudio" preload="auto" loop>
+  <source src="mouna_ragam_original_theme.mp3" type="audio/mpeg">
+</audio>
 
-<div id="fog"></div>
-
-
-<!-- PARTICLES -->
-
-<div id="particles"></div>
-
-
-<!-- INTRO -->
+<div id="musicControl">
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <span>♫</span> Music
+  </button>
+</div>
 
 <section id="intro">
-
-  <!-- ఇక్కడ తర్వాత మీ logo URL పెడదాం -->
-
-  <img src="logo.png" alt="Mouna Ragam Logo" class="logo">
-
+  <img src="logo.png.jpeg" alt="మౌనరాగం Logo" class="logo">
   <div class="intro-text">
-
     కొన్ని మౌనాలు...<br>
     వినిపించవు.<br><br>
     అనుభవించాలి.
-
   </div>
-
-  <div style="font-size:1.2rem;margin:20px 0;">
-    ✒️ మౌనరాగం
-  </div>
-
-  <button
-    class="enter-btn"
-    onclick="enterSite()"
-  >
-    ENTER
-  </button>
-
+  <div style="font-size:1.2rem;color:#ddd;margin-bottom:20px">✒️ మౌనరాగం</div>
+  <button class="enter-btn" onclick="enterSite()">ENTER</button>
+  <div class="hint">Enter to listen to the silence.</div>
 </section>
-
-
-<!-- MAIN -->
 
 <div id="main" style="display:none">
 
-
-<!-- HERO -->
-
 <section id="hero">
-
   <h1>మౌనరాగం</h1>
-
-  <div class="subtitle">
-    Where Silence Finds Words
-  </div>
-
-  <p>
+  <div class="subtitle">Where Silence Finds Words</div>
+  <p class="hero-copy">
     Not every feeling can be spoken.<br>
     Not every tear can be explained.<br>
     Some emotions are born in silence<br>
     and live forever through words.
   </p>
-
-  <div class="scroll-down">
-    ↓ Scroll
-  </div>
-
+  <div class="scroll-down">↓ Scroll</div>
 </section>
 
-
-<!-- ABOUT -->
-
 <section id="about">
-
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
-    నా గురించి
-  </h2>
-
+  <h2 class="section-title">నా గురించి</h2>
   <div class="glass-card">
-
-    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
-
+    <p class="words">
       నేను రచయితను కాదు...<br><br>
       మౌనానికి<br>
       పదాలు ఇచ్చే<br>
       ఒక మనిషిని.
-
     </p>
-
-    <p style="text-align:center;margin-top:20px;color:var(--gold)">
-      ✒️ మౌనరాగం
-    </p>
-
+    <div class="words-signature">✒️ మౌనరాగం</div>
   </div>
-
 </section>
 
-
-<!-- WORDS -->
-
-<section id="words">
-
-  <h2 class="words-title">
-    మాటల్లో చెప్పలేనివి
-  </h2>
-
-  <div class="words-content">
-
-    <p>
-
+<section id="story">
+  <h2 class="section-title">నా మౌనం</h2>
+  <div class="glass-card">
+    <p class="words">
       కొన్ని భావాలకు మాటలు ఉండవు...<br>
       కొన్ని కన్నీళ్లకు<br>
       కారణాలు చెప్పలేం...<br><br>
-
       కొన్ని జ్ఞాపకాలు<br>
-      మనతో మాట్లాడవు...<br>
-
+      మనతో మాట్లాడవు...<br><br>
       కానీ మన మౌనంలో<br>
       ఎప్పటికీ జీవిస్తాయి.
-
     </p>
-
-    <div class="words-signature">
-      ✒️ మౌనరాగం
-    </div>
-
+    <div class="words-signature">✒️ మౌనరాగం</div>
   </div>
-
 </section>
 
-
-<!-- MY QUOTES -->
-
-<section id="my-quotes">
-
-  <h2 class="section-title">
-    మౌనం రాసిన మాటలు
-  </h2>
-
-  <p class="section-subtitle">
-    భావాలకు పదాలైన కొన్ని మౌన క్షణాలు...
-  </p>
-
+<section id="quotes">
+  <h2 class="section-title">Quotes</h2>
   <div class="quote-grid">
 
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        మౌనం
-      </div>
-
-      <div class="quote-text">
-        మౌనం అంటే సమాధానం లేకపోవడం కాదు...<br>
-        అదే అసలైన సమాధానం.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        ప్రేమ
-      </div>
-
-      <div class="quote-text">
-        చెప్పకుండా అర్థమయ్యే ప్రేమే<br>
-        అసలైన ప్రేమ.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        బాధ
-      </div>
-
-      <div class="quote-text">
-        లోపల ఏడుస్తున్న గొంతు<br>
-        బయటికి నవ్వుతూ ఉంటుంది.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        విరిగిన మనసు
-      </div>
-
-      <div class="quote-text">
-        విరిగిపోయిన వాళ్ళు<br>
-        మళ్ళీ మొత్తం అవ్వరు...<br>
-        కానీ ఇంకా బలంగా ఉంటారు.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        జ్ఞాపకాలు
-      </div>
-
-      <div class="quote-text">
-        కొన్ని జ్ఞాపకాలు<br>
-        మర్చిపోవడానికి కాదు...<br>
-        జీవించడానికి.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        నిశ్శబ్దం
-      </div>
-
-      <div class="quote-text">
-        మాటలు అయిపోయిన చోటే<br>
-        అసలైన కథ మొదలవుతుంది.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        నమ్మకం
-      </div>
-
-      <div class="quote-text">
-        నమ్మకం ఒకసారి పోతే<br>
-        వెయ్యి సార్లు క్షమించినా రాదు.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        ఒంటరితనం
-      </div>
-
-      <div class="quote-text">
-        ఒంటరితనం శిక్ష కాదు...<br>
-        అది నీకు నువ్వు ఇచ్చుకునే బహుమతి.
-      </div>
-    </div>
-
-
-    <div class="quote-card">
-      <div class="quote-mark">“</div>
-
-      <div class="quote-category">
-        కన్నీళ్లు
-      </div>
-
-      <div class="quote-text">
-        కళ్ళలో నీరు కనిపించకపోయినా<br>
-        గుండెలో వరదలు ఉంటాయి.
-      </div>
-    </div>
-
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">మౌనం</div><div class="quote-text">మౌనం అంటే సమాధానం లేకపోవడం కాదు...<br>అదే అసలైన సమాధానం.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">ప్రేమ</div><div class="quote-text">చెప్పకుండా అర్థమయ్యే ప్రేమే<br>అసలైన ప్రేమ.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">బాధ</div><div class="quote-text">లోపల ఏడుస్తున్న గొంతు<br>బయటికి నవ్వుతూ ఉంటుంది.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">విరిగిన మనసు</div><div class="quote-text">విరిగిపోయిన వాళ్ళు<br>మళ్ళీ మొత్తం అవ్వరు...<br>కానీ ఇంకా బలంగా ఉంటారు.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">జ్ఞాపకాలు</div><div class="quote-text">కొన్ని జ్ఞాపకాలు<br>మర్చిపోవడానికి కాదు...<br>జీవించడానికి.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">నిశ్శబ్దం</div><div class="quote-text">మాటలు అయిపోయిన చోటే<br>అసలైన కథ మొదలవుతుంది.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">నమ్మకం</div><div class="quote-text">నమ్మకం ఒకసారి పోతే<br>వెయ్యి సార్లు క్షమించినా రాదు.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">ఒంటరితనం</div><div class="quote-text">ఒంటరితనం శిక్ష కాదు...<br>అది నీకు నువ్వు ఇచ్చుకునే బహుమతి.</div></div>
+    <div class="quote-card"><div class="quote-mark">“</div><div class="quote-category">కన్నీళ్లు</div><div class="quote-text">కళ్ళలో నీరు కనిపించకపోయినా<br>గుండెలో వరదలు ఉంటాయి.</div></div>
 
   </div>
-
 </section>
-
-
-<!-- SPECIAL QUOTES -->
 
 <section id="special">
-
-  <h2 class="special-title">
-    మౌన రాగం — Special Quotes
-  </h2>
-
+  <h2 class="section-title">మౌనరాగం Special Quotes</h2>
   <div class="special-grid">
-
-
-    <div class="special-card">
-
-      <p>
-        “మాటల్లో చెప్పలేని బాధలు<br>
-        మౌనంలో పాటలా మారాయి...<br>
-        అదే మౌన రాగం.”
-      </p>
-
-    </div>
-
-
-    <div class="special-card">
-
-      <p>
-        “కొన్ని మౌనాలు కవితలు.<br>
-        కొన్ని కన్నీళ్లు కథలు.<br>
-        వినగలిగితే అవే మౌన రాగాలు.”
-      </p>
-
-    </div>
-
-
-    <div class="special-card">
-
-      <p>
-        “గుండెలో వంద భావాలు.<br>
-        పెదవులపై ఒక్క మాట లేదు.<br>
-        ఈ నిశ్శబ్దమే నా మౌన రాగం.”
-      </p>
-
-    </div>
-
-
-    <div class="special-card">
-
-      <p>
-        “ప్రపంచానికి నేను మౌనంగా ఉన్నా,<br>
-        నా కలానికి మాత్రం వేయి భాషలు తెలుసు.”
-      </p>
-
-    </div>
-
-
-    <div class="special-card">
-
-      <p>
-        “మౌనం నా భాష.<br>
-        భావం నా స్వరం.<br>
-        కాగితం నా రాగం.”
-      </p>
-
-    </div>
-
-
+    <div class="special-card"><p>“మాటల్లో చెప్పలేని బాధలు<br>మౌనంలో పాటలా మారాయి...<br>అదే మౌన రాగం.”</p></div>
+    <div class="special-card"><p>“కొన్ని మౌనాలు కవితలు.<br>కొన్ని కన్నీళ్లు కథలు.<br>వినగలిగితే అవే మౌన రాగాలు.”</p></div>
+    <div class="special-card"><p>“గుండెలో వంద భావాలు.<br>పెదవులపై ఒక్క మాట లేదు.<br>ఈ నిశ్శబ్దమే నా మౌన రాగం.”</p></div>
+    <div class="special-card"><p>“ప్రపంచానికి నేను మౌనంగా ఉన్నా,<br>నా కలానికి మాత్రం వేయి భాషలు తెలుసు.”</p></div>
+    <div class="special-card"><p>“మౌనం నా భాష.<br>భావం నా స్వరం.<br>కాగితం నా రాగం.”</p></div>
   </div>
-
 </section>
 
-
-
-<!-- POETRY SECTION -->
 <section id="poetry">
-
-  <h2 class="section-title">కవితలు</h2>
-
-  <p class="section-subtitle">
-    మౌనంలో పుట్టిన భావాలు... పదాలుగా మారిన క్షణాలు.
-  </p>
-
+  <h2 class="section-title">Poetry</h2>
   <div class="poetry-grid">
-
-    <div class="poetry-card">
-      <div class="poetry-icon">✒️</div>
-      <div class="poetry-category">మౌనం</div>
-      <p>
-        మౌనం అంటే<br>
-        సమాధానం లేకపోవడం కాదు...<br><br>
-        అదే అసలైన<br>
-        సమాధానం.
-      </p>
-    </div>
-
-    <div class="poetry-card">
-      <div class="poetry-icon">♡</div>
-      <div class="poetry-category">ప్రేమ</div>
-      <p>
-        చెప్పకుండా<br>
-        అర్థమయ్యే ప్రేమే...<br><br>
-        అసలైన ప్రేమ.
-      </p>
-    </div>
-
-    <div class="poetry-card">
-      <div class="poetry-icon">☾</div>
-      <div class="poetry-category">బాధ</div>
-      <p>
-        లోపల ఏడుస్తున్న గొంతు<br>
-        బయటికి నవ్వుతూ ఉంటుంది.
-      </p>
-    </div>
-
-    <div class="poetry-card">
-      <div class="poetry-icon">❦</div>
-      <div class="poetry-category">జ్ఞాపకాలు</div>
-      <p>
-        కొన్ని జ్ఞాపకాలు<br>
-        మర్చిపోవడానికి కాదు...<br><br>
-        జీవించడానికి.
-      </p>
-    </div>
-
-    <div class="poetry-card">
-      <div class="poetry-icon">∞</div>
-      <div class="poetry-category">నిశ్శబ్దం</div>
-      <p>
-        మాటలు అయిపోయిన చోటే<br>
-        అసలైన కథ<br>
-        మొదలవుతుంది.
-      </p>
-    </div>
-
-    <div class="poetry-card">
-      <div class="poetry-icon">💧</div>
-      <div class="poetry-category">కన్నీళ్లు</div>
-      <p>
-        కళ్ళలో నీరు<br>
-        కనిపించకపోయినా...<br><br>
-        గుండెలో వరదలు ఉంటాయి.
-      </p>
-    </div>
-
+    <div class="poetry-card"><div class="poetry-icon">✒️</div><div class="poetry-category">మౌనం</div><p>మౌనం అంటే<br>సమాధానం లేకపోవడం కాదు...<br><br>అదే అసలైన<br>సమాధానం.</p></div>
+    <div class="poetry-card"><div class="poetry-icon">♡</div><div class="poetry-category">ప్రేమ</div><p>చెప్పకుండా<br>అర్థమయ్యే ప్రేమే...<br><br>అసలైన ప్రేమ.</p></div>
+    <div class="poetry-card"><div class="poetry-icon">☾</div><div class="poetry-category">బాధ</div><p>లోపల ఏడుస్తున్న గొంతు<br>బయటికి నవ్వుతూ ఉంటుంది.</p></div>
+    <div class="poetry-card"><div class="poetry-icon">❦</div><div class="poetry-category">జ్ఞాపకాలు</div><p>కొన్ని జ్ఞాపకాలు<br>మర్చిపోవడానికి కాదు...<br><br>జీవించడానికి.</p></div>
+    <div class="poetry-card"><div class="poetry-icon">∞</div><div class="poetry-category">నిశ్శబ్దం</div><p>మాటలు అయిపోయిన చోటే<br>అసలైన కథ<br>మొదలవుతుంది.</p></div>
+    <div class="poetry-card"><div class="poetry-icon">💧</div><div class="poetry-category">కన్నీళ్లు</div><p>కళ్ళలో నీరు<br>కనిపించకపోయినా...<br><br>గుండెలో వరదలు ఉంటాయి.</p></div>
   </div>
-
-  <div class="featured-poem">
-    <div class="featured-label">మౌన రాగం — ప్రత్యేక కవిత</div>
-    <p>
-      మౌనం నా భాష.<br>
-      భావం నా స్వరం.<br>
-      కాగితం నా రాగం.
-    </p>
-    <div class="featured-signature">✒️ మౌనరాగం</div>
-  </div>
-
 </section>
 
-<!-- FINAL -->
-
-<section id="final-line">
-
+<section id="final">
   <div class="final-line">
-
     మౌనమే నా భాష<br>
     ఓ మూగ మనసా.......
-
   </div>
-
-  <div class="final-signature">
-    ✒️ మౌనరాగం
-  </div>
-
 </section>
-
-
-<!-- BOOKS -->
 
 <section id="books">
-
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
-    Coming Soon
-  </h2>
-
+  <h2 class="section-title">Coming Soon</h2>
   <div class="book-grid">
-
-    <div class="book-card">
-      <h3>మౌనరాగం</h3>
-    </div>
-
-    <div class="book-card">
-      <h3>వాన... నువ్వు... నేను</h3>
-    </div>
-
-    <div class="book-card">
-      <h3>చివరి పేజీ</h3>
-    </div>
-
+    <div class="book-card"><h3>మౌనరాగం</h3></div>
+    <div class="book-card"><h3>వాన... నువ్వు... నేను</h3></div>
+    <div class="book-card"><h3>చివరి పేజీ</h3></div>
   </div>
-
 </section>
-
-
-<!-- CONTACT -->
 
 <section id="contact">
-
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
-    Contact
-  </h2>
-
+  <h2 class="section-title">Contact</h2>
   <div class="social-links">
-
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="#">YouTube</a>
+    <a href="#" target="_blank">Instagram</a>
+    <a href="#" target="_blank">Facebook</a>
+    <a href="#" target="_blank">YouTube</a>
     <a href="mailto:">Email</a>
-
   </div>
-
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-  <p>
-    "కొన్ని భావాలు...<br>
-    చదవడానికి కావు.<br>
-    అనుభవించడానికి."
-  </p>
-
-  <p style="color:var(--gold);margin-top:20px">
-    ✒️ మౌనరాగం
-  </p>
-
-  <p>
-    Where Silence Finds Words
-  </p>
-
-  <p style="font-size:.9rem">
-    © 2026 Mouna Ragam
-  </p>
-
+  <p>“కొన్ని భావాలు...<br>చదవడానికి కావు.<br>అనుభవించడానికి.”</p>
+  <p class="gold" style="margin-top:20px">✒️ మౌనరాగం</p>
+  <p>Where Silence Finds Words</p>
+  <p style="font-size:.9rem">© 2026 Mouna Ragam</p>
 </footer>
-
 
 </div>
 
-
 <script>
+/* LOADING SEQUENCE */
+const words=["Loading...","Memories...","Pain...","Love...","Silence..."];
+let wi=0;
+const loadingWord=document.getElementById("loadingWord");
+const loader=document.getElementById("loader");
 
-
-/* LOADER */
-
-const words = [
-  "Loading...",
-  "Memories...",
-  "Pain...",
-  "Love...",
-  "Silence..."
-];
-
-let i = 0;
-
-const loaderInterval = setInterval(() => {
-
-  document.getElementById("loadingWord").innerText = words[i];
-
-  i++;
-
-  if(i >= words.length){
-
-    clearInterval(loaderInterval);
-
-    setTimeout(() => {
-
-      document.getElementById("loader").style.display = "none";
-
-    },1500);
-
+const wordTimer=setInterval(()=>{
+  wi++;
+  if(wi<words.length){
+    loadingWord.textContent=words[wi];
+  }else{
+    clearInterval(wordTimer);
+    setTimeout(()=>{
+      loader.style.opacity="0";
+      setTimeout(()=>loader.style.display="none",800);
+      startRain();
+    },900);
   }
-
 },1500);
 
+/* RAIN VISUAL */
+function startRain(){
+  const rain=document.getElementById("rain");
+  for(let i=0;i<90;i++){
+    const drop=document.createElement("div");
+    drop.className="drop";
+    drop.style.left=Math.random()*100+"%";
+    drop.style.top=(-Math.random()*100)+"vh";
+    drop.style.animationDuration=(.55+Math.random()*.9)+"s";
+    drop.style.animationDelay=(Math.random()*2)+"s";
+    rain.appendChild(drop);
+  }
+}
 
-/* ENTER */
-
+/* ENTER: RAIN FIRST, THEN THEME MUSIC */
 function enterSite(){
+  const intro=document.getElementById("intro");
+  const main=document.getElementById("main");
+  const rainAudio=document.getElementById("rainAudio");
+  const themeAudio=document.getElementById("themeAudio");
+  const control=document.getElementById("musicControl");
+  const btn=document.getElementById("musicBtn");
 
-  document.getElementById("main").style.display = "block";
+  if(intro.classList.contains("entered")) return;
+  intro.classList.add("entered");
+  main.style.display="block";
+  intro.style.opacity="0";
 
-  document.getElementById("intro").style.opacity = "0";
+  // ENTER click unlocks audio playback. Rain is the opening atmosphere.
+  rainAudio.volume=0.45;
+  rainAudio.currentTime=0;
+  rainAudio.play().catch(()=>{});
 
-  setTimeout(() => {
+  // After 6 seconds, crossfade from rain into the Mouna Ragam theme.
+  setTimeout(()=>{
+    themeAudio.currentTime=0;
+    themeAudio.volume=0;
+    themeAudio.play().then(()=>{
+      control.style.display="block";
+      btn.innerHTML="<span>♫</span> Music On";
 
-    document.getElementById("intro").style.display = "none";
+      let rainV=0.45;
+      let themeV=0;
+      const fade=setInterval(()=>{
+        rainV-=0.01875;
+        themeV+=0.025;
+        rainAudio.volume=Math.max(0,rainV);
+        themeAudio.volume=Math.min(0.60,themeV);
 
+        if(rainV<=0){
+          rainAudio.pause();
+          rainAudio.currentTime=0;
+        }
+        if(rainV<=0 && themeV>=0.60){
+          themeAudio.volume=0.60;
+          clearInterval(fade);
+        }
+      },100);
+    }).catch(()=>{
+      control.style.display="block";
+      btn.innerHTML="<span>♫</span> Music";
+    });
+  },6000);
+
+  setTimeout(()=>{
+    intro.style.display="none";
   },1000);
-
 }
 
-
-/* RAIN */
-
-for(let i=0;i<100;i++){
-
-  const drop = document.createElement("div");
-
-  drop.className = "drop";
-
-  drop.style.left =
-    Math.random()*100 + "%";
-
-  drop.style.animationDuration =
-    (0.5 + Math.random()) + "s";
-
-  drop.style.animationDelay =
-    Math.random()*2 + "s";
-
-  document.getElementById("rain")
-    .appendChild(drop);
-
+/* PLAY / PAUSE */
+function toggleMusic(){
+  const audio=document.getElementById("themeAudio");
+  const btn=document.getElementById("musicBtn");
+  if(audio.paused){
+    audio.volume=0.60;
+    audio.play().catch(()=>{});
+    btn.innerHTML="<span>♫</span> Music On";
+  }else{
+    audio.pause();
+    btn.innerHTML="<span>♫</span> Music Off";
+  }
 }
 
-
-/* PARTICLES */
-
-for(let i=0;i<30;i++){
-
-  const p = document.createElement("div");
-
-  p.className = "particle"
-
-  p.style.left =
-    Math.random()*100 + "%";
-
-  p.style.top =
-    Math.random()*100 + "%";
-
-  p.style.animationDelay =
-    Math.random()*10 + "s";
-
-  document.getElementById("particles")
-    .appendChild(p);
-
-}
-
-
-/* SCROLL ANIMATION */
-
-const observer =
-new IntersectionObserver((entries) => {
-
-  entries.forEach(entry => {
-
-    if(entry.isIntersecting){
-
-      entry.target.classList.add("show");
-
-    }
-
+/* SCROLL REVEAL */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("show");
   });
+},{threshold:.16});
 
-},{
-  threshold:0.15
+document.querySelectorAll(".glass-card").forEach(el=>observer.observe(el));
+
+/* Keyboard convenience */
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter" && document.getElementById("main").style.display!=="block"){
+    enterSite();
+  }
 });
-
-
-document
-.querySelectorAll(
-  ".glass-card, .quote-card, .special-card, .poetry-card"
-)
-.forEach(card => {
-
-  observer.observe(card);
-
-});
-
-
 </script>
 
 </body>
