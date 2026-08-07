@@ -50,9 +50,7 @@ section{
 }
 
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 #loader{
   position:fixed;
@@ -68,7 +66,6 @@ section{
 .loading-text{
   font-size:2.5rem;
   color:var(--gold);
-  opacity:0;
   animation:fadeInOut 2s infinite;
 }
 
@@ -78,9 +75,7 @@ section{
 }
 
 
-/* =========================
-   RAIN
-========================= */
+/* RAIN */
 
 #rain{
   position:fixed;
@@ -107,9 +102,7 @@ section{
 }
 
 
-/* =========================
-   FOG
-========================= */
+/* FOG */
 
 #fog{
   position:fixed;
@@ -125,14 +118,12 @@ section{
 }
 
 @keyframes fogMove{
-  0%{transform:translateX(-10%)}
-  100%{transform:translateX(10%)}
+  from{transform:translateX(-10%)}
+  to{transform:translateX(10%)}
 }
 
 
-/* =========================
-   PARTICLES
-========================= */
+/* PARTICLES */
 
 #particles{
   position:fixed;
@@ -167,9 +158,7 @@ section{
 }
 
 
-/* =========================
-   INTRO
-========================= */
+/* INTRO */
 
 #intro{
   z-index:2;
@@ -178,6 +167,7 @@ section{
 
 .logo{
   width:200px;
+  max-width:70%;
   margin-bottom:30px;
   filter:drop-shadow(0 0 20px var(--gold));
   animation:glow 3s infinite;
@@ -207,7 +197,7 @@ section{
   color:var(--gold);
   font-size:1.2rem;
   cursor:pointer;
-  transition:all .4s;
+  transition:.4s;
   font-family:'Cormorant Garamond';
 }
 
@@ -218,9 +208,7 @@ section{
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 #hero h1{
   font-size:5rem;
@@ -256,9 +244,7 @@ section{
 }
 
 
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .glass-card{
   background:rgba(255,255,255,0.05);
@@ -285,18 +271,16 @@ section{
 }
 
 
-/* =========================
-   STEP 1
-========================= */
+/* WORDS */
 
 #words{
   text-align:center;
   background:
-    radial-gradient(
-      circle at center,
-      rgba(212,175,55,.07),
-      transparent 65%
-    );
+  radial-gradient(
+    circle at center,
+    rgba(212,175,55,.07),
+    transparent 65%
+  );
 }
 
 .words-title{
@@ -328,18 +312,15 @@ section{
 }
 
 
-/* =========================
-   STEP 2
-   QUOTES
-========================= */
+/* QUOTES */
 
 #my-quotes{
   background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(212,175,55,.06),
-      transparent 60%
-    );
+  radial-gradient(
+    circle at 50% 30%,
+    rgba(212,175,55,.06),
+    transparent 60%
+  );
 }
 
 .section-title{
@@ -352,7 +333,6 @@ section{
 
 .section-subtitle{
   color:var(--grey);
-  font-size:1rem;
   text-align:center;
   margin-bottom:50px;
 }
@@ -380,7 +360,7 @@ section{
   border:1px solid rgba(212,175,55,.18);
   border-radius:18px;
 
-  transition:all .5s ease;
+  transition:.5s;
 
   opacity:0;
   transform:translateY(40px);
@@ -401,13 +381,11 @@ section{
   color:var(--gold);
   font-size:1rem;
   margin-bottom:22px;
-  letter-spacing:1px;
 }
 
 .quote-text{
   font-size:1.35rem;
   line-height:2.3;
-  color:var(--white);
 }
 
 .quote-mark{
@@ -420,16 +398,10 @@ section{
 }
 
 
-/* =========================
-   SPECIAL QUOTES
-========================= */
+/* SPECIAL */
 
 #special{
-  background:
-    linear-gradient(
-      rgba(13,13,13,.96),
-      rgba(13,13,13,.96)
-    );
+  background:#0D0D0D;
 }
 
 .special-title{
@@ -453,11 +425,11 @@ section{
   text-align:center;
 
   background:
-    linear-gradient(
-      135deg,
-      rgba(212,175,55,.07),
-      rgba(255,255,255,.025)
-    );
+  linear-gradient(
+    135deg,
+    rgba(212,175,55,.07),
+    rgba(255,255,255,.025)
+  );
 
   border-top:1px solid rgba(212,175,55,.35);
   border-bottom:1px solid rgba(212,175,55,.15);
@@ -486,9 +458,7 @@ section{
 }
 
 
-/* =========================
-   FINAL LINE
-========================= */
+/* FINAL */
 
 #final-line{
   min-height:80vh;
@@ -501,19 +471,15 @@ section{
   color:var(--gold);
   line-height:2.2;
   max-width:800px;
-  text-shadow:0 0 25px rgba(212,175,55,.15);
 }
 
 .final-signature{
   margin-top:50px;
   color:var(--grey);
-  font-size:1rem;
 }
 
 
-/* =========================
-   BOOKS
-========================= */
+/* BOOKS */
 
 .book-grid{
   display:flex;
@@ -535,9 +501,7 @@ section{
 }
 
 
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .social-links{
   display:flex;
@@ -551,7 +515,6 @@ section{
   color:var(--gold);
   text-decoration:none;
   border-bottom:1px solid transparent;
-  transition:.3s;
 }
 
 .social-links a:hover{
@@ -559,9 +522,7 @@ section{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   background:#000;
@@ -576,9 +537,7 @@ footer p{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -601,7 +560,6 @@ footer p{
 
   .words-content p{
     font-size:1.15rem;
-    line-height:2.3;
   }
 
   .quote-grid{
@@ -671,6 +629,8 @@ footer p{
 <!-- INTRO -->
 
 <section id="intro">
+
+  <!-- ఇక్కడ తర్వాత మీ logo URL పెడదాం -->
 
   <img
     src="YOUR_LOGO_URL_HERE"
@@ -742,7 +702,6 @@ footer p{
     <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
 
       నేను రచయితను కాదు...<br><br>
-
       మౌనానికి<br>
       పదాలు ఇచ్చే<br>
       ఒక మనిషిని.
@@ -771,7 +730,6 @@ footer p{
     <p>
 
       కొన్ని భావాలకు మాటలు ఉండవు...<br>
-
       కొన్ని కన్నీళ్లకు<br>
       కారణాలు చెప్పలేం...<br><br>
 
@@ -804,14 +762,10 @@ footer p{
     భావాలకు పదాలైన కొన్ని మౌన క్షణాలు...
   </p>
 
-
   <div class="quote-grid">
 
 
-    <!-- 1 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -819,19 +773,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         మౌనం అంటే సమాధానం లేకపోవడం కాదు...<br>
         అదే అసలైన సమాధానం.
-
       </div>
-
     </div>
 
 
-    <!-- 2 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -839,19 +787,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         చెప్పకుండా అర్థమయ్యే ప్రేమే<br>
         అసలైన ప్రేమ.
-
       </div>
-
     </div>
 
 
-    <!-- 3 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -859,19 +801,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         లోపల ఏడుస్తున్న గొంతు<br>
         బయటికి నవ్వుతూ ఉంటుంది.
-
       </div>
-
     </div>
 
 
-    <!-- 4 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -879,20 +815,14 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         విరిగిపోయిన వాళ్ళు<br>
         మళ్ళీ మొత్తం అవ్వరు...<br>
         కానీ ఇంకా బలంగా ఉంటారు.
-
       </div>
-
     </div>
 
 
-    <!-- 5 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -900,20 +830,14 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         కొన్ని జ్ఞాపకాలు<br>
         మర్చిపోవడానికి కాదు...<br>
         జీవించడానికి.
-
       </div>
-
     </div>
 
 
-    <!-- 6 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -921,19 +845,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         మాటలు అయిపోయిన చోటే<br>
         అసలైన కథ మొదలవుతుంది.
-
       </div>
-
     </div>
 
 
-    <!-- 7 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -941,19 +859,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         నమ్మకం ఒకసారి పోతే<br>
         వెయ్యి సార్లు క్షమించినా రాదు.
-
       </div>
-
     </div>
 
 
-    <!-- 8 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -961,19 +873,13 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         ఒంటరితనం శిక్ష కాదు...<br>
         అది నీకు నువ్వు ఇచ్చుకునే బహుమతి.
-
       </div>
-
     </div>
 
 
-    <!-- 9 -->
-
     <div class="quote-card">
-
       <div class="quote-mark">“</div>
 
       <div class="quote-category">
@@ -981,12 +887,9 @@ footer p{
       </div>
 
       <div class="quote-text">
-
         కళ్ళలో నీరు కనిపించకపోయినా<br>
         గుండెలో వరదలు ఉంటాయి.
-
       </div>
-
     </div>
 
 
@@ -1003,18 +906,15 @@ footer p{
     మౌన రాగం — Special Quotes
   </h2>
 
-
   <div class="special-grid">
 
 
     <div class="special-card">
 
       <p>
-
         “మాటల్లో చెప్పలేని బాధలు<br>
         మౌనంలో పాటలా మారాయి...<br>
         అదే మౌన రాగం.”
-
       </p>
 
     </div>
@@ -1023,11 +923,9 @@ footer p{
     <div class="special-card">
 
       <p>
-
         “కొన్ని మౌనాలు కవితలు.<br>
         కొన్ని కన్నీళ్లు కథలు.<br>
         వినగలిగితే అవే మౌన రాగాలు.”
-
       </p>
 
     </div>
@@ -1036,11 +934,9 @@ footer p{
     <div class="special-card">
 
       <p>
-
         “గుండెలో వంద భావాలు.<br>
         పెదవులపై ఒక్క మాట లేదు.<br>
         ఈ నిశ్శబ్దమే నా మౌన రాగం.”
-
       </p>
 
     </div>
@@ -1049,10 +945,8 @@ footer p{
     <div class="special-card">
 
       <p>
-
         “ప్రపంచానికి నేను మౌనంగా ఉన్నా,<br>
         నా కలానికి మాత్రం వేయి భాషలు తెలుసు.”
-
       </p>
 
     </div>
@@ -1061,11 +955,9 @@ footer p{
     <div class="special-card">
 
       <p>
-
         “మౌనం నా భాష.<br>
         భావం నా స్వరం.<br>
         కాగితం నా రాగం.”
-
       </p>
 
     </div>
@@ -1076,7 +968,7 @@ footer p{
 </section>
 
 
-<!-- FINAL LINE -->
+<!-- FINAL -->
 
 <section id="final-line">
 
@@ -1172,9 +1064,7 @@ footer p{
 <script>
 
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 const words = [
   "Loading...",
@@ -1207,9 +1097,7 @@ const loaderInterval = setInterval(() => {
 },1500);
 
 
-/* =========================
-   ENTER
-========================= */
+/* ENTER */
 
 function enterSite(){
 
@@ -1226,9 +1114,7 @@ function enterSite(){
 }
 
 
-/* =========================
-   RAIN
-========================= */
+/* RAIN */
 
 for(let i=0;i<100;i++){
 
@@ -1251,9 +1137,7 @@ for(let i=0;i<100;i++){
 }
 
 
-/* =========================
-   PARTICLES
-========================= */
+/* PARTICLES */
 
 for(let i=0;i<30;i++){
 
@@ -1276,9 +1160,7 @@ for(let i=0;i<30;i++){
 }
 
 
-/* =========================
-   SCROLL ANIMATIONS
-========================= */
+/* SCROLL ANIMATION */
 
 const observer =
 new IntersectionObserver((entries) => {
@@ -1299,14 +1181,14 @@ new IntersectionObserver((entries) => {
 
 
 document
-  .querySelectorAll(
-    ".glass-card, .quote-card, .special-card"
-  )
-  .forEach(card => {
+.querySelectorAll(
+  ".glass-card, .quote-card, .special-card"
+)
+.forEach(card => {
 
-    observer.observe(card);
+  observer.observe(card);
 
-  });
+});
 
 
 </script>
