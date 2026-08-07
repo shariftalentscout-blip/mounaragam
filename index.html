@@ -23,12 +23,15 @@
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:var(--black);
   color:var(--white);
   font-family:'Noto Serif Telugu',serif;
   overflow-x:hidden;
-  scroll-behavior:smooth;
 }
 
 h1,h2,h3{
@@ -47,14 +50,13 @@ section{
 }
 
 
-/* LOADING */
+/* =========================
+   LOADER
+========================= */
 
 #loader{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:var(--black);
   z-index:9999;
   display:flex;
@@ -76,14 +78,13 @@ section{
 }
 
 
-/* RAIN + FOG */
+/* =========================
+   RAIN
+========================= */
 
 #rain{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   pointer-events:none;
   z-index:1;
 }
@@ -105,19 +106,22 @@ section{
   }
 }
 
+
+/* =========================
+   FOG
+========================= */
+
 #fog{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:radial-gradient(
     circle at 50% 50%,
-    rgba(212,175,55,0.05) 0%,
+    rgba(212,175,55,0.05),
     transparent 70%
   );
   animation:fogMove 20s infinite alternate;
   z-index:0;
+  pointer-events:none;
 }
 
 @keyframes fogMove{
@@ -126,7 +130,46 @@ section{
 }
 
 
-/* INTRO */
+/* =========================
+   PARTICLES
+========================= */
+
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.particle{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:var(--gold);
+  border-radius:50%;
+  animation:float 10s infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0);
+    opacity:0;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-100vh);
+    opacity:0;
+  }
+}
+
+
+/* =========================
+   INTRO
+========================= */
 
 #intro{
   z-index:2;
@@ -142,11 +185,11 @@ section{
 
 @keyframes glow{
   0%,100%{
-    filter:drop-shadow(0 0 20px var(--gold))
+    filter:drop-shadow(0 0 20px var(--gold));
   }
 
   50%{
-    filter:drop-shadow(0 0 40px var(--gold))
+    filter:drop-shadow(0 0 40px var(--gold));
   }
 }
 
@@ -164,7 +207,7 @@ section{
   color:var(--gold);
   font-size:1.2rem;
   cursor:pointer;
-  transition:all 0.4s;
+  transition:all .4s;
   font-family:'Cormorant Garamond';
 }
 
@@ -175,20 +218,21 @@ section{
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 #hero h1{
   font-size:5rem;
   color:var(--gold);
   text-align:center;
-  animation:fadeInUp 1s;
 }
 
 #hero p{
   font-size:1.3rem;
   color:var(--grey);
   text-align:center;
-  max-width:600px;
+  max-width:650px;
   margin:20px auto;
   line-height:2rem;
 }
@@ -212,7 +256,9 @@ section{
 }
 
 
-/* GLASS CARDS */
+/* =========================
+   ABOUT
+========================= */
 
 .glass-card{
   background:rgba(255,255,255,0.05);
@@ -221,8 +267,9 @@ section{
   border-radius:15px;
   padding:40px;
   margin:20px;
-  max-width:500px;
-  transition:transform 0.5s,box-shadow 0.5s;
+  max-width:650px;
+  width:calc(100% - 40px);
+  transition:.5s;
   opacity:0;
   transform:translateY(50px);
 }
@@ -233,25 +280,21 @@ section{
 }
 
 .glass-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 10px 40px rgba(212,175,55,0.2);
-}
-
-.quote{
-  font-size:1.4rem;
-  line-height:2.2rem;
-  color:var(--white);
+  transform:translateY(-8px);
+  box-shadow:0 10px 40px rgba(212,175,55,.18);
 }
 
 
-/* NEW WORDS SECTION */
+/* =========================
+   STEP 1
+========================= */
 
 #words{
   text-align:center;
   background:
     radial-gradient(
       circle at center,
-      rgba(212,175,55,0.07),
+      rgba(212,175,55,.07),
       transparent 65%
     );
 }
@@ -267,35 +310,210 @@ section{
 .words-content{
   max-width:750px;
   padding:60px 45px;
-  background:rgba(255,255,255,0.035);
+  background:rgba(255,255,255,.035);
   backdrop-filter:blur(12px);
-  border:1px solid rgba(212,175,55,0.22);
+  border:1px solid rgba(212,175,55,.22);
   border-radius:20px;
-  box-shadow:0 0 50px rgba(212,175,55,0.06);
   text-align:center;
-  transition:all 0.5s ease;
-}
-
-.words-content:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 60px rgba(212,175,55,0.12);
 }
 
 .words-content p{
-  font-family:'Noto Serif Telugu',serif;
   font-size:1.45rem;
   line-height:2.6;
-  color:var(--white);
 }
 
 .words-signature{
   margin-top:40px;
   color:var(--gold);
-  font-size:1.15rem;
 }
 
 
-/* BOOKS */
+/* =========================
+   STEP 2
+   QUOTES
+========================= */
+
+#my-quotes{
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(212,175,55,.06),
+      transparent 60%
+    );
+}
+
+.section-title{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:3rem;
+  color:var(--gold);
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.section-subtitle{
+  color:var(--grey);
+  font-size:1rem;
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.quote-grid{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.quote-card{
+  position:relative;
+  padding:40px 35px;
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+
+  background:rgba(255,255,255,.035);
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(212,175,55,.18);
+  border-radius:18px;
+
+  transition:all .5s ease;
+
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.quote-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.quote-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(212,175,55,.55);
+  box-shadow:0 15px 45px rgba(212,175,55,.12);
+}
+
+.quote-category{
+  color:var(--gold);
+  font-size:1rem;
+  margin-bottom:22px;
+  letter-spacing:1px;
+}
+
+.quote-text{
+  font-size:1.35rem;
+  line-height:2.3;
+  color:var(--white);
+}
+
+.quote-mark{
+  position:absolute;
+  top:10px;
+  left:20px;
+  font-family:Georgia,serif;
+  font-size:4rem;
+  color:rgba(212,175,55,.12);
+}
+
+
+/* =========================
+   SPECIAL QUOTES
+========================= */
+
+#special{
+  background:
+    linear-gradient(
+      rgba(13,13,13,.96),
+      rgba(13,13,13,.96)
+    );
+}
+
+.special-title{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:2.8rem;
+  color:var(--gold);
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.special-grid{
+  max-width:900px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.special-card{
+  padding:45px 35px;
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,.07),
+      rgba(255,255,255,.025)
+    );
+
+  border-top:1px solid rgba(212,175,55,.35);
+  border-bottom:1px solid rgba(212,175,55,.15);
+
+  border-radius:16px;
+
+  transition:.5s;
+
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.special-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.special-card:hover{
+  box-shadow:0 10px 50px rgba(212,175,55,.12);
+  transform:translateY(-5px);
+}
+
+.special-card p{
+  font-size:1.45rem;
+  line-height:2.4;
+}
+
+
+/* =========================
+   FINAL LINE
+========================= */
+
+#final-line{
+  min-height:80vh;
+  text-align:center;
+}
+
+.final-line{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:2.2rem;
+  color:var(--gold);
+  line-height:2.2;
+  max-width:800px;
+  text-shadow:0 0 25px rgba(212,175,55,.15);
+}
+
+.final-signature{
+  margin-top:50px;
+  color:var(--grey);
+  font-size:1rem;
+}
+
+
+/* =========================
+   BOOKS
+========================= */
 
 .book-grid{
   display:flex;
@@ -309,7 +527,7 @@ section{
   padding:30px;
   width:250px;
   text-align:center;
-  transition:all 0.4s;
+  transition:.4s;
 }
 
 .book-card:hover{
@@ -317,19 +535,23 @@ section{
 }
 
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 .social-links{
   display:flex;
   gap:30px;
   margin-top:30px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .social-links a{
   color:var(--gold);
   text-decoration:none;
   border-bottom:1px solid transparent;
-  transition:0.3s;
+  transition:.3s;
 }
 
 .social-links a:hover{
@@ -337,13 +559,15 @@ section{
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   background:#000;
   padding:60px 20px;
   text-align:center;
-  border-top:1px solid rgba(212,175,55,0.2);
+  border-top:1px solid rgba(212,175,55,.2);
 }
 
 footer p{
@@ -352,36 +576,9 @@ footer p{
 }
 
 
-/* PARTICLES */
-
-.particle{
-  position:fixed;
-  width:2px;
-  height:2px;
-  background:var(--gold);
-  border-radius:50%;
-  pointer-events:none;
-  animation:float 10s infinite;
-}
-
-@keyframes float{
-  0%{
-    transform:translateY(0);
-    opacity:0;
-  }
-
-  50%{
-    opacity:1;
-  }
-
-  100%{
-    transform:translateY(-100vh);
-    opacity:0;
-  }
-}
-
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
@@ -393,7 +590,8 @@ footer p{
     font-size:1.3rem;
   }
 
-  .words-title{
+  .words-title,
+  .section-title{
     font-size:2.3rem;
   }
 
@@ -406,9 +604,33 @@ footer p{
     line-height:2.3;
   }
 
-  .social-links{
-    flex-wrap:wrap;
-    justify-content:center;
+  .quote-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quote-card{
+    min-height:210px;
+    padding:35px 22px;
+  }
+
+  .quote-text{
+    font-size:1.15rem;
+  }
+
+  .special-title{
+    font-size:2.2rem;
+  }
+
+  .special-card{
+    padding:35px 20px;
+  }
+
+  .special-card p{
+    font-size:1.15rem;
+  }
+
+  .final-line{
+    font-size:1.6rem;
   }
 
 }
@@ -420,18 +642,24 @@ footer p{
 <body>
 
 
-<!-- LOADING -->
+<!-- LOADER -->
 
 <div id="loader">
+
   <div class="loading-text" id="loadingWord">
     Loading...
   </div>
+
 </div>
 
 
-<!-- RAIN + FOG -->
+<!-- RAIN -->
 
 <div id="rain"></div>
+
+
+<!-- FOG -->
+
 <div id="fog"></div>
 
 
@@ -472,7 +700,7 @@ footer p{
 </section>
 
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 
 <div id="main" style="display:none">
 
@@ -521,7 +749,7 @@ footer p{
 
     </p>
 
-    <p style="text-align:center;margin-top:20px;font-size:1.2rem;color:var(--gold)">
+    <p style="text-align:center;margin-top:20px;color:var(--gold)">
       ✒️ మౌనరాగం
     </p>
 
@@ -530,7 +758,7 @@ footer p{
 </section>
 
 
-<!-- WORDS / EMOTIONS -->
+<!-- WORDS -->
 
 <section id="words">
 
@@ -564,74 +792,303 @@ footer p{
 </section>
 
 
-<!-- QUOTES -->
+<!-- MY QUOTES -->
 
-<section id="quotes">
+<section id="my-quotes">
 
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:50px">
-    Featured Quotes
+  <h2 class="section-title">
+    మౌనం రాసిన మాటలు
   </h2>
 
-  <div class="glass-card">
-    <p class="quote">
-      "మితి మీరిన ఇష్టం...<br>
-      భయంకరమైన వ్యసనం."
-    </p>
-  </div>
+  <p class="section-subtitle">
+    భావాలకు పదాలైన కొన్ని మౌన క్షణాలు...
+  </p>
 
-  <div class="glass-card">
-    <p class="quote">
-      "నేను ఎవరికీ చెప్పుకోలేని<br>
-      ఒక అందమైన రహస్యం నువ్వు."
-    </p>
-  </div>
 
-  <div class="glass-card">
-    <p class="quote">
-      "మంచి నీరు తాగే గొంతు<br>
-      అబద్ధం చెప్పొచ్చు...<br><br>
+  <div class="quote-grid">
 
-      ఉప్పు నీరు కార్చే కళ్ళు<br>
-      అబద్ధం చెప్పవు."
-    </p>
-  </div>
 
-  <div class="glass-card">
-    <p class="quote">
-      "పగటి పూట నిద్ర వస్తుందంటే<br>
-      దేహం అలసిపోయిందని అర్థం...<br><br>
+    <!-- 1 -->
 
-      రాత్రి పూట నిద్ర రాకపోతే<br>
-      మనసు బలహీనమైందని అర్థం."
-    </p>
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        మౌనం
+      </div>
+
+      <div class="quote-text">
+
+        మౌనం అంటే సమాధానం లేకపోవడం కాదు...<br>
+        అదే అసలైన సమాధానం.
+
+      </div>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        ప్రేమ
+      </div>
+
+      <div class="quote-text">
+
+        చెప్పకుండా అర్థమయ్యే ప్రేమే<br>
+        అసలైన ప్రేమ.
+
+      </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        బాధ
+      </div>
+
+      <div class="quote-text">
+
+        లోపల ఏడుస్తున్న గొంతు<br>
+        బయటికి నవ్వుతూ ఉంటుంది.
+
+      </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        విరిగిన మనసు
+      </div>
+
+      <div class="quote-text">
+
+        విరిగిపోయిన వాళ్ళు<br>
+        మళ్ళీ మొత్తం అవ్వరు...<br>
+        కానీ ఇంకా బలంగా ఉంటారు.
+
+      </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        జ్ఞాపకాలు
+      </div>
+
+      <div class="quote-text">
+
+        కొన్ని జ్ఞాపకాలు<br>
+        మర్చిపోవడానికి కాదు...<br>
+        జీవించడానికి.
+
+      </div>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        నిశ్శబ్దం
+      </div>
+
+      <div class="quote-text">
+
+        మాటలు అయిపోయిన చోటే<br>
+        అసలైన కథ మొదలవుతుంది.
+
+      </div>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        నమ్మకం
+      </div>
+
+      <div class="quote-text">
+
+        నమ్మకం ఒకసారి పోతే<br>
+        వెయ్యి సార్లు క్షమించినా రాదు.
+
+      </div>
+
+    </div>
+
+
+    <!-- 8 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        ఒంటరితనం
+      </div>
+
+      <div class="quote-text">
+
+        ఒంటరితనం శిక్ష కాదు...<br>
+        అది నీకు నువ్వు ఇచ్చుకునే బహుమతి.
+
+      </div>
+
+    </div>
+
+
+    <!-- 9 -->
+
+    <div class="quote-card">
+
+      <div class="quote-mark">“</div>
+
+      <div class="quote-category">
+        కన్నీళ్లు
+      </div>
+
+      <div class="quote-text">
+
+        కళ్ళలో నీరు కనిపించకపోయినా<br>
+        గుండెలో వరదలు ఉంటాయి.
+
+      </div>
+
+    </div>
+
+
   </div>
 
 </section>
 
 
-<!-- POETRY -->
+<!-- SPECIAL QUOTES -->
 
-<section id="poetry">
+<section id="special">
 
-  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">
-    Poetry
+  <h2 class="special-title">
+    మౌన రాగం — Special Quotes
   </h2>
 
-  <div class="glass-card">
 
-    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
+  <div class="special-grid">
 
-      Featured Poem Preview Here
 
-    </p>
+    <div class="special-card">
 
-    <button
-      class="enter-btn"
-      style="margin-top:20px"
-    >
-      Read More
-    </button>
+      <p>
 
+        “మాటల్లో చెప్పలేని బాధలు<br>
+        మౌనంలో పాటలా మారాయి...<br>
+        అదే మౌన రాగం.”
+
+      </p>
+
+    </div>
+
+
+    <div class="special-card">
+
+      <p>
+
+        “కొన్ని మౌనాలు కవితలు.<br>
+        కొన్ని కన్నీళ్లు కథలు.<br>
+        వినగలిగితే అవే మౌన రాగాలు.”
+
+      </p>
+
+    </div>
+
+
+    <div class="special-card">
+
+      <p>
+
+        “గుండెలో వంద భావాలు.<br>
+        పెదవులపై ఒక్క మాట లేదు.<br>
+        ఈ నిశ్శబ్దమే నా మౌన రాగం.”
+
+      </p>
+
+    </div>
+
+
+    <div class="special-card">
+
+      <p>
+
+        “ప్రపంచానికి నేను మౌనంగా ఉన్నా,<br>
+        నా కలానికి మాత్రం వేయి భాషలు తెలుసు.”
+
+      </p>
+
+    </div>
+
+
+    <div class="special-card">
+
+      <p>
+
+        “మౌనం నా భాష.<br>
+        భావం నా స్వరం.<br>
+        కాగితం నా రాగం.”
+
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- FINAL LINE -->
+
+<section id="final-line">
+
+  <div class="final-line">
+
+    మౌనమే నా భాష<br>
+    ఓ మూగ మనసా.......
+
+  </div>
+
+  <div class="final-signature">
+    ✒️ మౌనరాగం
   </div>
 
 </section>
@@ -702,7 +1159,7 @@ footer p{
     Where Silence Finds Words
   </p>
 
-  <p style="font-size:0.9rem">
+  <p style="font-size:.9rem">
     © 2026 Mouna Ragam
   </p>
 
@@ -715,7 +1172,9 @@ footer p{
 <script>
 
 
-// LOADING SEQUENCE
+/* =========================
+   LOADER
+========================= */
 
 const words = [
   "Loading...",
@@ -748,13 +1207,15 @@ const loaderInterval = setInterval(() => {
 },1500);
 
 
-// ENTER BUTTON
+/* =========================
+   ENTER
+========================= */
 
 function enterSite(){
 
   document.getElementById("main").style.display = "block";
 
-  document.getElementById("intro").style.opacity = 0;
+  document.getElementById("intro").style.opacity = "0";
 
   setTimeout(() => {
 
@@ -765,22 +1226,24 @@ function enterSite(){
 }
 
 
-// RAIN
+/* =========================
+   RAIN
+========================= */
 
-for(let i = 0; i < 100; i++){
+for(let i=0;i<100;i++){
 
-  let drop = document.createElement("div");
+  const drop = document.createElement("div");
 
   drop.className = "drop";
 
   drop.style.left =
-    Math.random() * 100 + "%";
+    Math.random()*100 + "%";
 
   drop.style.animationDuration =
-    0.5 + Math.random() + "s";
+    (0.5 + Math.random()) + "s";
 
   drop.style.animationDelay =
-    Math.random() * 2 + "s";
+    Math.random()*2 + "s";
 
   document.getElementById("rain")
     .appendChild(drop);
@@ -788,22 +1251,24 @@ for(let i = 0; i < 100; i++){
 }
 
 
-// PARTICLES
+/* =========================
+   PARTICLES
+========================= */
 
-for(let i = 0; i < 30; i++){
+for(let i=0;i<30;i++){
 
-  let p = document.createElement("div");
+  const p = document.createElement("div");
 
   p.className = "particle";
 
   p.style.left =
-    Math.random() * 100 + "%";
+    Math.random()*100 + "%";
 
   p.style.top =
-    Math.random() * 100 + "%";
+    Math.random()*100 + "%";
 
   p.style.animationDelay =
-    Math.random() * 10 + "s";
+    Math.random()*10 + "s";
 
   document.getElementById("particles")
     .appendChild(p);
@@ -811,27 +1276,37 @@ for(let i = 0; i < 30; i++){
 }
 
 
-// SCROLL ANIMATIONS
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
 
 const observer =
-  new IntersectionObserver((entries) => {
+new IntersectionObserver((entries) => {
 
-    entries.forEach(entry => {
+  entries.forEach(entry => {
 
-      if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
-        entry.target.classList.add("show");
+      entry.target.classList.add("show");
 
-      }
+    }
 
-    });
+  });
 
-  },{threshold:0.2});
+},{
+  threshold:0.15
+});
 
 
 document
-  .querySelectorAll(".glass-card")
-  .forEach(card => observer.observe(card));
+  .querySelectorAll(
+    ".glass-card, .quote-card, .special-card"
+  )
+  .forEach(card => {
+
+    observer.observe(card);
+
+  });
 
 
 </script>
