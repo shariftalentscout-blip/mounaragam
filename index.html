@@ -3,183 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mouna Ragam - Quotes & Stories</title>
+<title>మౌనరాగం - Where Silence Finds Words</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+Telugu:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  body { font-family: Arial, sans-serif; margin:0; background:#f5f5f5; }
-  header { background:#6a1b9a; color:white; padding:15px; text-align:center; position:sticky; top:0; }
- .container { max-width:800px; margin:20px auto; padding:10px; }
- .card { background:white; padding:15px; margin:15px 0; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
- .card img { width:100%; border-radius:8px; }
- .admin { background:#fff3cd; padding:15px; margin:20px 0; border-radius:10px; }
-  input, textarea, select, button { width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:5px; }
-  button { background:#6a1b9a; color:white; border:none; cursor:pointer; font-weight:bold; }
-  button:hover { background:#4a148c; }
- .ads-section { background:#e3f2fd; padding:15px; margin:20px 0; border-radius:10px; }
- .ad-card { background:white; padding:10px; margin:10px 0; border-left:4px solid #2196f3; }
- .ad-card a { color:#2196f3; text-decoration:none; font-weight:bold; }
+:root{
+  --black:#0D0D0D;
+  --gold:#D4AF37;
+  --white:#FFFFFF;
+  --grey:#A0A0A0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--white);font-family:'Noto Serif Telugu', serif;overflow-x:hidden;scroll-behavior:smooth}
+h1,h2,h3{font-family:'Cormorant Garamond', serif;font-weight:300}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:80px 20px;position:relative}
+
+/* LOADING */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.loading-text{font-size:2.5rem;color:var(--gold);opacity:0;animation:fadeInOut 2s infinite}
+@keyframes fadeInOut{0%,100%{opacity:0}50%{opacity:1}}
+
+/* RAIN + FOG */
+#rain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.drop{position:absolute;width:1px;height:20px;background:linear-gradient(transparent,rgba(212,175,55,0.3));animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(100vh)}}
+#fog{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,0.05) 0%,transparent 70%);animation:fogMove 20s infinite alternate;z-index:0}
+@keyframes fogMove{0%{transform:translateX(-10%)}100%{transform:translateX(10%)}}
+
+/* INTRO */
+#intro{z-index:2;text-align:center}
+.logo{width:200px;margin-bottom:30px;filter:drop-shadow(0 0 20px var(--gold));animation:glow 3s infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}50%{filter:drop-shadow(0 0 40px var(--gold))}}
+.intro-text{font-size:1.8rem;line-height:2.5rem;margin:30px 0;color:var(--grey)}
+.enter-btn{padding:15px 50px;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:1.2rem;cursor:pointer;transition:all 0.4s;font-family:'Cormorant Garamond'}
+.enter-btn:hover{background:var(--gold);color:var(--black);box-shadow:0 0 30px var(--gold)}
+
+/* HERO */
+#hero h1{font-size:5rem;color:var(--gold);text-align:center;animation:fadeInUp 1s}
+#hero p{font-size:1.3rem;color:var(--grey);text-align:center;max-width:600px;margin:20px auto;line-height:2rem}
+.subtitle{font-family:'Cormorant Garamond';font-size:1.5rem;color:var(--gold);margin-bottom:20px}
+.scroll-down{position:absolute;bottom:30px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* GLASS CARDS */
+.glass-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,0.2);border-radius:15px;padding:40px;margin:20px;max-width:500px;transition:transform 0.5s,box-shadow 0.5s;opacity:0;transform:translateY(50px)}
+.glass-card.show{opacity:1;transform:translateY(0)}
+.glass-card:hover{transform:translateY(-10px);box-shadow:0 10px 40px rgba(212,175,55,0.2)}
+.quote{font-size:1.4rem;line-height:2.2rem;color:var(--white)}
+
+/* BOOKS */
+.book-grid{display:flex;gap:30px;flex-wrap:wrap;justify-content:center}
+.book-card{border:1px solid var(--gold);padding:30px;width:250px;text-align:center;transition:all 0.4s}
+.book-card:hover{box-shadow:0 0 30px var(--gold)}
+
+/* CONTACT */
+.social-links{display:flex;gap:30px;margin-top:30px}
+.social-links a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:0.3s}
+.social-links a:hover{border-color:var(--gold)}
+
+/* FOOTER */
+footer{background:#000;padding:60px 20px;text-align:center;border-top:1px solid rgba(212,175,55,0.2)}
+footer p{color:var(--grey);margin:10px 0}
+
+/* PARTICLES */
+.particle{position:fixed;width:2px;height:2px;background:var(--gold);border-radius:50%;pointer-events:none;animation:float 10s infinite}
+@keyframes float{0%{transform:translateY(0);opacity:0}50%{opacity:1}100%{transform:translateY(-100vh);opacity:0}}
+
+@media(max-width:768px){
+  #hero h1{font-size:3rem}
+ .intro-text{font-size:1.3rem}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🌸 Mouna Ragam 🌸</h1>
-  <button onclick="showAdmin()">Admin Panel</button>
-</header>
-
-<div class="container" id="mainContent">
-  <h2>Latest Quotes & Stories</h2>
-  <div id="contentList"></div>
-
-  <div class="ads-section">
-    <h3>📢 Sponsored Ads</h3>
-    <div id="adsList"></div>
-  </div>
+<!-- LOADING -->
+<div id="loader">
+  <div class="loading-text" id="loadingWord">Loading...</div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="container admin" id="adminPanel" style="display:none;">
-  <h2>Admin Panel - Add Content</h2>
-  
-  <label>Type Select Cheyyi:</label>
-  <select id="typeSelect">
-    <option value="quotes">Quote</option>
-    <option value="stories">Story</option>
-    <option value="ads">Ad</option>
-  </select>
+<!-- RAIN + FOG -->
+<div id="rain"></div>
+<div id="fog"></div>
 
-  <label>Category:</label>
-  <select id="catSelect">
-    <option value="love">Love</option>
-    <option value="motivation">Motivation</option>
-    <option value="sad">Sad</option>
-  </select>
+<!-- PARTICLES -->
+<div id="particles"></div>
 
-  <label>Image Link paste cheyyi:</label>
-  <input id="imgLink" placeholder="https://example.com/image.jpg">
+<!-- INTRO -->
+<section id="intro">
+  <img src="YOUR_LOGO_URL_HERE" alt="Mouna Ragam Logo" class="logo">
+  <div class="intro-text">
+    కొన్ని మౌనాలు...<br>
+    వినిపించవు.<br><br>
+    అనుభవించాలి.
+  </div>
+  <div style="font-size:1.2rem;margin:20px 0;">✒️ మౌనరాగం</div>
+  <button class="enter-btn" onclick="enterSite()">ENTER</button>
+</section>
 
-  <!-- Quote/Story kosam -->
-  <textarea id="contentText" placeholder="Content ikkada rayi"></textarea>
+<!-- MAIN CONTENT -->
+<div id="main" style="display:none">
 
-  <!-- Ad kosam 3 boxes -->
-  <input id="adTitle" placeholder="Ad Title rayi" style="display:none;">
-  <textarea id="adText" placeholder="Ad Description rayi" style="display:none;"></textarea>
-  <input id="adLink" placeholder="Ad Link URL paste cheyyi" style="display:none;">
+<!-- HERO -->
+<section id="hero">
+  <h1>మౌనరాగం</h1>
+  <div class="subtitle">Where Silence Finds Words</div>
+  <p>Not every feeling can be spoken.<br>
+  Not every tear can be explained.<br>
+  Some emotions are born in silence<br>
+  and live forever through words.</p>
+  <div class="scroll-down">↓ Scroll</div>
+</section>
 
-  <button onclick="saveContent()">Add & Publish</button>
-  <button onclick="hideAdmin()" style="background:#777;">Close</button>
+<!-- ABOUT -->
+<section id="about">
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">నా గురించి</h2>
+  <div class="glass-card">
+    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">
+      నేను రచయితను కాదు...<br><br>
+      మౌనానికి<br>
+      పదాలు ఇచ్చే<br>
+      ఒక మనిషిని.
+    </p>
+    <p style="text-align:center;margin-top:20px;font-size:1.2rem;color:var(--gold)">✒️ మౌనరాగం</p>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:50px">Featured Quotes</h2>
+  <div class="glass-card"><p class="quote">"మితి మీరిన ఇష్టం...<br>భయంకరమైన వ్యసనం."</p></div>
+  <div class="glass-card"><p class="quote">"నేను ఎవరికీ చెప్పుకోలేని<br>ఒక అందమైన రహస్యం నువ్వు."</p></div>
+  <div class="glass-card"><p class="quote">"మంచి నీరు తాగే గొంతు<br>అబద్ధం చెప్పొచ్చు...<br><br>ఉప్పు నీరు కార్చే కళ్ళు<br>అబద్ధం చెప్పవు."</p></div>
+  <div class="glass-card"><p class="quote">"పగటి పూట నిద్ర వస్తుందంటే<br>దేహం అలసిపోయిందని అర్థం...<br><br>రాత్రి పూట నిద్ర రాకపోతే<br>మనసు బలహీనమైందని అర్థం."</p></div>
+</section>
+
+<!-- POETRY -->
+<section id="poetry">
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Poetry</h2>
+  <div class="glass-card">
+    <p style="font-size:1.3rem;line-height:2.5rem;text-align:center">Featured Poem Preview Here</p>
+    <button class="enter-btn" style="margin-top:20px">Read More</button>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section id="books">
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Coming Soon</h2>
+  <div class="book-grid">
+    <div class="book-card"><h3>మౌనరాగం</h3></div>
+    <div class="book-card"><h3>వాన... నువ్వు... నేను</h3></div>
+    <div class="book-card"><h3>చివరి పేజీ</h3></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 style="font-size:3rem;color:var(--gold);margin-bottom:30px">Contact</h2>
+  <div class="social-links">
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">YouTube</a>
+    <a href="mailto:">Email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>"కొన్ని భావాలు...<br>చదవడానికి కావు.<br>అనుభవించడానికి."</p>
+  <p style="color:var(--gold);margin-top:20px">✒️ మౌనరాగం</p>
+  <p>Where Silence Finds Words</p>
+  <p style="font-size:0.9rem">© 2026 Mouna Ragam</p>
+</footer>
+
 </div>
 
 <script>
-let data = JSON.parse(localStorage.getItem('data') || '{}');
-
-// Page load ayyagane content chupinchadam
-window.onload = function(){
-  loadContent();
-  loadAds();
-}
-
-function showAdmin(){
-  document.getElementById('adminPanel').style.display = 'block';
-  document.getElementById('mainContent').style.display = 'none';
-}
-
-function hideAdmin(){
-  document.getElementById('adminPanel').style.display = 'none';
-  document.getElementById('mainContent').style.display = 'block';
-}
-
-// Dropdown marite fields change cheyyadaniki
-document.getElementById('typeSelect').addEventListener('change', function(){
-  let type = this.value;
-  document.getElementById('contentText').style.display = (type=='ads')? 'none' : 'block';
-  document.getElementById('catSelect').style.display = (type=='ads')? 'none' : 'block';
-  document.getElementById('adTitle').style.display = (type=='ads')? 'block' : 'none';
-  document.getElementById('adText').style.display = (type=='ads')? 'block' : 'none';
-  document.getElementById('adLink').style.display = (type=='ads')? 'block' : 'none';
-});
-
-function saveContent(){
-  let type = document.getElementById('typeSelect').value;
-  let cat = document.getElementById('catSelect').value;
-  let img = document.getElementById('imgLink').value || "https://picsum.photos/400/250";
-  let data = JSON.parse(localStorage.getItem('data')||'{}');
-
-  if(type == 'ads'){
-    let adTitle = document.getElementById('adTitle').value;
-    let adText = document.getElementById('adText').value;
-    let adLink = document.getElementById('adLink').value;
-    
-    if(adTitle == "" || adText == ""){ 
-      alert("Ad Title and Description raayandi anna"); 
-      return; 
-    }
-    
-    if(!data.ads) data.ads = [];
-    data.ads.push({title: adTitle, text: adText, link: adLink, img: img});
-    localStorage.setItem('data', JSON.stringify(data));
-    
-    document.getElementById('adTitle').value = '';
-    document.getElementById('adText').value = '';
-    document.getElementById('adLink').value = '';
-    document.getElementById('imgLink').value = '';
-    alert("Ad add ayyindi! Close kottu ippudu site lo chudu");
-    loadAds();
-    
-  } else {
-    let text = document.getElementById('contentText').value;
-    if(text == ""){ 
-      alert("Content raayandi anna"); 
-      return; 
-    }
-    
-    if(!data[type]) data[type] = {};
-    if(!data[type][cat]) data[type][cat] = [];
-    data[type][cat].push({img: img, text: text});
-    localStorage.setItem('data', JSON.stringify(data));
-    
-    document.getElementById('contentText').value = '';
-    document.getElementById('imgLink').value = '';
-    alert("Content add ayyindi! Close kottu ippudu site lo chudu");
-    loadContent();
+// LOADING SEQUENCE
+const words = ["Loading...","Memories...","Pain...","Love...","Silence..."];
+let i=0;
+const loaderInterval = setInterval(()=>{
+  document.getElementById('loadingWord').innerText = words[i];
+  i++;
+  if(i>=words.length){
+    clearInterval(loaderInterval);
+    setTimeout(()=>{document.getElementById('loader').style.display='none'},1500);
   }
+},1500);
+
+// ENTER BUTTON
+function enterSite(){
+  document.getElementById('main').style.display='block';
+  document.getElementById('intro').style.opacity=0;
+  setTimeout(()=>{document.getElementById('intro').style.display='none'},1000);
 }
 
-function loadContent(){
-  let data = JSON.parse(localStorage.getItem('data') || '{}');
-  let html = '';
-  
-  for(let type in data){
-    if(type == 'ads') continue;
-    for(let cat in data[type]){
-      data[type][cat].forEach(item => {
-        html += `<div class="card">
-          <img src="${item.img}">
-          <p><b>${cat.toUpperCase()}</b> - ${type}</p>
-          <p>${item.text}</p>
-        </div>`;
-      });
-    }
-  }
-  document.getElementById('contentList').innerHTML = html || '<p>Inka content ledu</p>';
+// RAIN
+for(let i=0;i<100;i++){
+  let drop = document.createElement('div');
+  drop.className='drop';
+  drop.style.left=Math.random()*100+'%';
+  drop.style.animationDuration=0.5+Math.random()+'s';
+  drop.style.animationDelay=Math.random()*2+'s';
+  document.getElementById('rain').appendChild(drop);
 }
 
-function loadAds(){
-  let data = JSON.parse(localStorage.getItem('data') || '{}');
-  let html = '';
-  
-  if(data.ads){
-    data.ads.forEach(ad => {
-      html += `<div class="ad-card">
-        <img src="${ad.img}" style="width:100%; max-height:200px; object-fit:cover;">
-        <h4>${ad.title}</h4>
-        <p>${ad.text}</p>
-        ${ad.link? `<a href="${ad.link}" target="_blank">Click Here →</a>` : ''}
-      </div>`;
-    });
-  }
-  document.getElementById('adsList').innerHTML = html || '<p>Inka ads levu</p>';
+// PARTICLES
+for(let i=0;i<30;i++){
+  let p = document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.top=Math.random()*100+'%';
+  p.style.animationDelay=Math.random()*10+'s';
+  document.getElementById('particles').appendChild(p);
 }
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('show');
+  })
+},{threshold:0.2})
+document.querySelectorAll('.glass-card').forEach(card=>observer.observe(card));
 </script>
-
 </body>
 </html>
