@@ -49,7 +49,6 @@ section{
   position:relative;
 }
 
-
 /* LOADER */
 
 #loader{
@@ -70,10 +69,9 @@ section{
 }
 
 @keyframes fadeInOut{
-  0%,100%{opacity:0}
-  50%{opacity:1}
+ 0%,100%{opacity:0}
+ 50%{opacity:1}
 }
-
 
 /* RAIN */
 
@@ -101,7 +99,6 @@ section{
   }
 }
 
-
 /* FOG */
 
 #fog{
@@ -121,7 +118,6 @@ section{
   from{transform:translateX(-10%)}
   to{transform:translateX(10%)}
 }
-
 
 /* PARTICLES */
 
@@ -156,7 +152,6 @@ section{
     opacity:0;
   }
 }
-
 
 /* INTRO */
 
@@ -207,7 +202,6 @@ section{
   box-shadow:0 0 30px var(--gold);
 }
 
-
 /* HERO */
 
 #hero h1{
@@ -243,7 +237,6 @@ section{
   50%{transform:translateY(10px)}
 }
 
-
 /* ABOUT */
 
 .glass-card{
@@ -269,7 +262,6 @@ section{
   transform:translateY(-8px);
   box-shadow:0 10px 40px rgba(212,175,55,.18);
 }
-
 
 /* WORDS */
 
@@ -310,7 +302,6 @@ section{
   margin-top:40px;
   color:var(--gold);
 }
-
 
 /* QUOTES */
 
@@ -397,7 +388,6 @@ section{
   color:rgba(212,175,55,.12);
 }
 
-
 /* SPECIAL */
 
 #special{
@@ -457,7 +447,6 @@ section{
   line-height:2.4;
 }
 
-
 /* FINAL */
 
 #final-line{
@@ -477,7 +466,6 @@ section{
   margin-top:50px;
   color:var(--grey);
 }
-
 
 /* BOOKS */
 
@@ -500,7 +488,6 @@ section{
   box-shadow:0 0 30px var(--gold);
 }
 
-
 /* CONTACT */
 
 .social-links{
@@ -521,7 +508,6 @@ section{
   border-color:var(--gold);
 }
 
-
 /* FOOTER */
 
 footer{
@@ -536,7 +522,6 @@ footer p{
   margin:10px 0;
 }
 
-
 /* MOBILE */
 
 @media(max-width:768px){
@@ -545,54 +530,53 @@ footer p{
     font-size:3rem;
   }
 
-  .intro-text{
+ .intro-text{
     font-size:1.3rem;
   }
 
-  .words-title,
-  .section-title{
+ .words-title,
+ .section-title{
     font-size:2.3rem;
   }
 
-  .words-content{
+ .words-content{
     padding:40px 22px;
   }
 
-  .words-content p{
+ .words-content p{
     font-size:1.15rem;
   }
 
-  .quote-grid{
+ .quote-grid{
     grid-template-columns:1fr;
   }
 
-  .quote-card{
+ .quote-card{
     min-height:210px;
     padding:35px 22px;
   }
 
-  .quote-text{
+ .quote-text{
     font-size:1.15rem;
   }
 
-  .special-title{
+ .special-title{
     font-size:2.2rem;
   }
 
-  .special-card{
+ .special-card{
     padding:35px 20px;
   }
 
-  .special-card p{
+ .special-card p{
     font-size:1.15rem;
   }
 
-  .final-line{
+ .final-line{
     font-size:1.6rem;
   }
 
 }
-
 
 /* =========================
    POETRY SECTION
@@ -622,7 +606,7 @@ footer p{
   backdrop-filter:blur(12px);
   border:1px solid rgba(212,175,55,.18);
   border-radius:18px;
-  transition:transform .5s ease,border-color .5s ease,box-shadow .5s ease;
+  transition:transform.5s ease,border-color.5s ease,box-shadow.5s ease;
   opacity:0;
   transform:translateY(40px);
 }
@@ -656,19 +640,37 @@ footer p{
 .featured-signature{margin-top:35px;color:var(--gold);}
 
 @media(max-width:768px){
-  .poetry-grid{grid-template-columns:1fr;gap:20px;}
-  .poetry-card{min-height:230px;padding:35px 20px;}
-  .poetry-card p{font-size:1.15rem;line-height:2;}
-  .featured-poem{padding:45px 20px;margin-top:50px;}
-  .featured-poem p{font-size:1.25rem;line-height:2.2;}
+ .poetry-grid{grid-template-columns:1fr;gap:20px;}
+ .poetry-card{min-height:230px;padding:35px 20px;}
+ .poetry-card p{font-size:1.15rem;line-height:2;}
+ .featured-poem{padding:45px 20px;margin-top:50px;}
+ .featured-poem p{font-size:1.25rem;line-height:2.2;}
+}
+
+/* SOUND BUTTON */
+.sound-btn {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 9999;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition:.3s;
+}
+.sound-btn:hover {
+  background: var(--gold);
+  color: var(--black);
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <!-- LOADER -->
 
@@ -680,21 +682,25 @@ footer p{
 
 </div>
 
-
 <!-- RAIN -->
 
 <div id="rain"></div>
-
 
 <!-- FOG -->
 
 <div id="fog"></div>
 
-
 <!-- PARTICLES -->
 
 <div id="particles"></div>
 
+<!-- SOUND BUTTON -->
+<button class="sound-btn" onclick="toggleSound()">🔊</button>
+
+<!-- RAIN SOUND -->
+<audio id="rainSound" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_d171aeeaaf.mp3" type="audio/mpeg">
+</audio>
 
 <!-- INTRO -->
 
@@ -725,11 +731,9 @@ footer p{
 
 </section>
 
-
 <!-- MAIN -->
 
 <div id="main" style="display:none">
-
 
 <!-- HERO -->
 
@@ -753,7 +757,6 @@ footer p{
   </div>
 
 </section>
-
 
 <!-- ABOUT -->
 
@@ -781,7 +784,6 @@ footer p{
   </div>
 
 </section>
-
 
 <!-- WORDS -->
 
@@ -815,7 +817,6 @@ footer p{
 
 </section>
 
-
 <!-- MY QUOTES -->
 
 <section id="my-quotes">
@@ -830,7 +831,6 @@ footer p{
 
   <div class="quote-grid">
 
-
     <div class="quote-card">
       <div class="quote-mark">“</div>
 
@@ -843,7 +843,6 @@ footer p{
         అదే అసలైన సమాధానం.
       </div>
     </div>
-
 
     <div class="quote-card">
       <div class="quote-mark">“</div>
@@ -858,7 +857,6 @@ footer p{
       </div>
     </div>
 
-
     <div class="quote-card">
       <div class="quote-mark">“</div>
 
@@ -871,7 +869,6 @@ footer p{
         బయటికి నవ్వుతూ ఉంటుంది.
       </div>
     </div>
-
 
     <div class="quote-card">
       <div class="quote-mark">“</div>
@@ -887,7 +884,6 @@ footer p{
       </div>
     </div>
 
-
     <div class="quote-card">
       <div class="quote-mark">“</div>
 
@@ -902,7 +898,6 @@ footer p{
       </div>
     </div>
 
-
     <div class="quote-card">
       <div class="quote-mark">“</div>
 
@@ -915,7 +910,6 @@ footer p{
         అసలైన కథ మొదలవుతుంది.
       </div>
     </div>
-
 
     <div class="quote-card">
       <div class="quote-mark">“</div>
@@ -930,7 +924,6 @@ footer p{
       </div>
     </div>
 
-
     <div class="quote-card">
       <div class="quote-mark">“</div>
 
@@ -943,7 +936,6 @@ footer p{
         అది నీకు నువ్వు ఇచ్చుకునే బహుమతి.
       </div>
     </div>
-
 
     <div class="quote-card">
       <div class="quote-mark">“</div>
@@ -958,11 +950,9 @@ footer p{
       </div>
     </div>
 
-
   </div>
 
 </section>
-
 
 <!-- SPECIAL QUOTES -->
 
@@ -974,7 +964,6 @@ footer p{
 
   <div class="special-grid">
 
-
     <div class="special-card">
 
       <p>
@@ -984,7 +973,6 @@ footer p{
       </p>
 
     </div>
-
 
     <div class="special-card">
 
@@ -996,7 +984,6 @@ footer p{
 
     </div>
 
-
     <div class="special-card">
 
       <p>
@@ -1007,7 +994,6 @@ footer p{
 
     </div>
 
-
     <div class="special-card">
 
       <p>
@@ -1016,7 +1002,6 @@ footer p{
       </p>
 
     </div>
-
 
     <div class="special-card">
 
@@ -1028,12 +1013,9 @@ footer p{
 
     </div>
 
-
   </div>
 
 </section>
-
-
 
 <!-- POETRY SECTION -->
 <section id="poetry">
@@ -1137,7 +1119,6 @@ footer p{
 
 </section>
 
-
 <!-- BOOKS -->
 
 <section id="books">
@@ -1164,7 +1145,6 @@ footer p{
 
 </section>
 
-
 <!-- CONTACT -->
 
 <section id="contact">
@@ -1183,7 +1163,6 @@ footer p{
   </div>
 
 </section>
-
 
 <!-- FOOTER -->
 
@@ -1209,12 +1188,9 @@ footer p{
 
 </footer>
 
-
 </div>
 
-
 <script>
-
 
 /* LOADER */
 
@@ -1248,7 +1224,6 @@ const loaderInterval = setInterval(() => {
 
 },1500);
 
-
 /* ENTER */
 
 function enterSite(){
@@ -1263,8 +1238,10 @@ function enterSite(){
 
   },1000);
 
+  // Sound start
+  document.getElementById("rainSound").volume = 0.2;
+  document.getElementById("rainSound").play();
 }
-
 
 /* RAIN */
 
@@ -1284,10 +1261,9 @@ for(let i=0;i<100;i++){
     Math.random()*2 + "s";
 
   document.getElementById("rain")
-    .appendChild(drop);
+   .appendChild(drop);
 
 }
-
 
 /* PARTICLES */
 
@@ -1307,10 +1283,21 @@ for(let i=0;i<30;i++){
     Math.random()*10 + "s";
 
   document.getElementById("particles")
-    .appendChild(p);
+   .appendChild(p);
 
 }
 
+/* SOUND TOGGLE */
+function toggleSound(){
+  let sound = document.getElementById("rainSound");
+  if(sound.paused){
+    sound.play();
+    document.querySelector(".sound-btn").innerText = "🔊";
+  } else {
+    sound.pause();
+    document.querySelector(".sound-btn").innerText = "🔇";
+  }
+}
 
 /* SCROLL ANIMATION */
 
@@ -1331,17 +1318,15 @@ new IntersectionObserver((entries) => {
   threshold:0.15
 });
 
-
 document
 .querySelectorAll(
-  ".glass-card, .quote-card, .special-card, .poetry-card"
+  ".glass-card,.quote-card,.special-card,.poetry-card"
 )
 .forEach(card => {
 
   observer.observe(card);
 
 });
-
 
 </script>
 
