@@ -73,6 +73,13 @@ h1 { font-size: 3rem; background: linear-gradient(90deg, var(--green), var(--tea
     <select id="typeSelect">
       <option value="quotes">Quote</option>
       <option value="stories">Story</option>
+      <option value="ads">Ad</option>
+      </select>
+<input id="contentInput" placeholder="Quote/Story rayi">
+<textarea id="adTitle" placeholder="Ad kosam Title rayi" style="display:none;"></textarea>
+<textarea id="adText" placeholder="Ad Description rayi" style="display:none;"></textarea>
+<input id="adLink" placeholder="Ad Link URL" style="display:none;">
+<button onclick="saveContent()">Save Cheyyi</button>
     </select>
     <select id="catSelect">
       <option value="love">Love</option>
@@ -118,7 +125,11 @@ h1 { font-size: 3rem; background: linear-gradient(90deg, var(--green), var(--tea
     <div id="stories-content" class="content-grid"></div>
   </div>
 </div>
-
+let data = { 
+  quotes: { love: [], sad: [], broken: [], motivation: [], marriage: [] }, 
+  stories: { motivation: [], marriage: [] },
+  ads: [] // <-- IDHI KOTTA LINE
+};
 <script>
 let data = { quotes: { love: [], sad: [], broken: [], motivation: [], marriage: [] }, stories: { love: [], sad: [], broken: [], motivation: [], marriage: [] } };
 
@@ -128,20 +139,62 @@ function openSection(s) { document.querySelector('.section-buttons').style.displ
 function backToHome() { document.querySelector('.section-buttons').style.display = 'flex'; document.querySelectorAll('.category-section').forEach(s => s.style.display = 'none'); }
 
 // ===== NUVVU ADD CHESE FUNCTION =====
-function addContent() {
+function saveContent(){
   let type = document.getElementById('typeSelect').value;
   let cat = document.getElementById('catSelect').value;
   let img = document.getElementById('imgLink').value || "https://picsum.photos/400/250";
-  let text = document.getElementById('contentText').value;
 
+  if(type == 'ads'){
+    let adTitle = document.getElementById('adTitle').value;
+    let adText = document.getElementById('adText').value;
+    let adLink = document.getElementById('adLink').value;
+    if(adTitle && adText){
+      data.ads.push({title: adTitle, text: adText, link: adLink, cat: cat, img: img});
+      localStorage.setItem('data', JSON.stringify(data));
+      alert('Ad Saved!');
+    } else {
+      alert('Title and Description raayi');
+    }
+  } else {
+    let text = document.getElementById('contentText').value;
+    if(text){
+      data[type][cat].push({text: text, img: img});
+      localStorage.setItem('data', JSON.stringify(data));
+      alert(type + ' Saved!');
+    } else {
+      alert('Content raayi');
+    }
+  }
+  // Clear cheyyadam
+  document.getElementById('contentText').value = '';
+  document.getElementById('adTitle').value = '';
+  document.getElementById('adText').value = '';
+  document.getElementById('adLink').value = '';
+}
+
+// Dropdown marite boxes chupinchadaniki
+document.getElementById('typeSelect').addEventListener('change', function(){
+  let type = this.value;
+  document.getElementById('contentText').style.display = (type=='ads')? 'none' : 'block';
+  document.getElementById('catSelect').style.display = (type=='ads')? 'none' : 'block';
+  document.getElementById('adTitle').style.display = (type=='ads')? 'block' : 'none';
+  document.getElementById('adText').style.display = (type=='ads')? 'block' : 'none';
+  document.getElementById('adLink').style.display = (type=='ads')? 'block' : 'none';
+});
+  // Ad select cheste ad fields chupinchadaniki
+document.getElementById('typeSelect').onchange = function(){
+  let type = this.value;
+  document.getElementById('contentInput').style.display = (type=='ads') ? 'none' : 'block';
+  document.getElementById('adTitle').style.display = (type=='ads') ? 'block' : 'none';
+  document.getElementById('adText').style.display = (type=='ads') ? 'block' : 'none';
+  document.getElementById('adLink').style.display = (type=='ads') ? 'block' : 'none';
+}
   if(text == "") { alert("Content raayandi anna"); return; }
-
-  data[type][cat].push({img: img, text: text});
+   data[type][cat].push({img: img, text: text});
   document.getElementById('contentText').value = "";
   alert("Add ayyindi! Ippudu site lo chudu. Commit cheyyali ante nenu cheptha");
   showCategory(type, cat, document.querySelector(`#${type}.cat-btn.active`));
 }
-
 function showCategory(type, cat, btn) {
   document.querySelectorAll(`#${type}.cat-btn`).forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
