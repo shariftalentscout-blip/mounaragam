@@ -181,13 +181,57 @@ document.getElementById('typeSelect').addEventListener('change', function(){
   document.getElementById('adText').style.display = (type=='ads')? 'block' : 'none';
   document.getElementById('adLink').style.display = (type=='ads')? 'block' : 'none';
 });
-  // Ad select cheste ad fields chupinchadaniki
-document.getElementById('typeSelect').onchange = function(){
+ // Dropdown marite boxes chupinchadaniki - idhi already undi, touch cheyyakku
+document.getElementById('typeSelect').addEventListener('change', function(){
   let type = this.value;
-  document.getElementById('contentInput').style.display = (type=='ads') ? 'none' : 'block';
-  document.getElementById('adTitle').style.display = (type=='ads') ? 'block' : 'none';
-  document.getElementById('adText').style.display = (type=='ads') ? 'block' : 'none';
-  document.getElementById('adLink').style.display = (type=='ads') ? 'block' : 'none';
+  document.getElementById('contentText').style.display = (type=='ads')? 'none' : 'block';
+  document.getElementById('catSelect').style.display = (type=='ads')? 'none' : 'block';
+  document.getElementById('adTitle').style.display = (type=='ads')? 'block' : 'none';
+  document.getElementById('adText').style.display = (type=='ads')? 'block' : 'none';
+  document.getElementById('adLink').style.display = (type=='ads')? 'block' : 'none';
+});
+
+function saveContent(){
+  let type = document.getElementById('typeSelect').value;
+  let cat = document.getElementById('catSelect').value;
+  let img = document.getElementById('imgLink').value || "https://picsum.photos/400/250";
+  let data = JSON.parse(localStorage.getItem('data')||'{}');
+
+  if(type == 'ads'){
+    let adTitle = document.getElementById('adTitle').value;
+    let adText = document.getElementById('adText').value;
+    let adLink = document.getElementById('adLink').value;
+    
+    if(adTitle == "" || adText == ""){ 
+      alert("Ad Title and Description raayandi anna"); 
+      return; 
+    }
+    
+    if(!data.ads) data.ads = [];
+    data.ads.push({title: adTitle, text: adText, link: adLink, img: img});
+    localStorage.setItem('data', JSON.stringify(data));
+    
+    // Clear cheyyadam
+    document.getElementById('adTitle').value = '';
+    document.getElementById('adText').value = '';
+    document.getElementById('adLink').value = '';
+    alert("Ad add ayyindi! Ippudu site lo chudu. Commit cheyyali ante nenu cheptha");
+    
+  } else {
+    let text = document.getElementById('contentText').value;
+    if(text == ""){ 
+      alert("Content raayandi anna"); 
+      return; 
+    }
+    
+    if(!data[type]) data[type] = {};
+    if(!data[type][cat]) data[type][cat] = [];
+    data[type][cat].push({img: img, text: text});
+    localStorage.setItem('data', JSON.stringify(data));
+    
+    document.getElementById('contentText').value = '';
+    alert("Add ayyindi! Ippudu site lo chudu. Commit cheyyali ante nenu cheptha");
+  }
 }
   if(text == "") { alert("Content raayandi anna"); return; }
    data[type][cat].push({img: img, text: text});
