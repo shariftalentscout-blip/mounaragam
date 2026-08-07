@@ -6,47 +6,52 @@
 <title>మౌనరాగం - Mouna Ragam</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+Telugu:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root { --black: #0D0D0D; --gold: #D4AF37; --white: #FFFFFF; --grey: #A0A0A0; }
+/* ===== COLOR CODE PANEL ===== */
+:root {
+  --black: #050A0A; /* Background Black */
+  --green: #2ECC71; /* Main Green */
+  --teal: #1ABC9C; /* Teal Accent */
+  --white: #FFFFFF;
+  --grey: #B8C5C5; /* Text Grey */
+}
+/* ============================ */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--black); color: var(--white); font-family: 'Noto Serif Telugu', serif; }
 
 #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); z-index: 9999; display: flex; align-items: center; justify-content: center; }
-.loader-text { font-size: 2rem; color: var(--gold); font-family: 'Cormorant Garamond', serif; animation: fadeInOut 2s ease-in-out infinite; }
+.loader-text { font-size: 2rem; background: linear-gradient(90deg, var(--green), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Cormorant Garamond', serif; animation: fadeInOut 2s ease-in-out infinite; }
 @keyframes fadeInOut { 0%,100%{opacity:0} 50%{opacity:1} }
 
-#intro { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; background: #000; }
-.logo { width: 220px; margin-bottom: 30px; filter: drop-shadow(0 0 30px rgba(212,175,55,0.4)); }
-.logo img { width: 100%; border-radius: 50%; }
+#intro { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; background: radial-gradient(circle at center, rgba(26,188,156,0.1) 0%, var(--black) 70%); }
+.logo { width: 220px; margin-bottom: 30px; filter: drop-shadow(0 0 40px rgba(26,188,156,0.5)); }
+.logo img { width: 100%; border-radius: 0; background: transparent; }
 .intro-text { font-size: 1.5rem; line-height: 2; margin-bottom: 40px; color: var(--grey); text-align: center; }
-.btn { padding: 15px 50px; border: 1px solid var(--gold); color: var(--gold); background: transparent; font-size: 1.2rem; cursor: pointer; font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; transition: 0.4s; margin: 10px; }
-.btn:hover { background: var(--gold); color: var(--black); box-shadow: 0 0 40px rgba(212,175,55,0.6); }
+.btn { padding: 15px 50px; border: 2px solid; border-image: linear-gradient(45deg, var(--green), var(--teal)) 1; color: var(--teal); background: transparent; font-size: 1.2rem; cursor: pointer; font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; transition: 0.4s; margin: 10px; }
+.btn:hover { background: linear-gradient(45deg, var(--green), var(--teal)); color: var(--black); box-shadow: 0 0 50px rgba(26,188,156,0.6); font-weight: 600; }
+
 #main { display: none; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-h1 { font-size: 3rem; color: var(--gold); text-align: center; font-family: 'Cormorant Garamond', serif; margin-bottom: 40px; }
+h1 { font-size: 3rem; background: linear-gradient(90deg, var(--green), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; font-family: 'Cormorant Garamond', serif; margin-bottom: 40px; }
 .section-buttons { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }
 
-/* CATEGORY SECTION */
+/* ADMIN PANEL */
+#adminPanel { background: rgba(26,188,156,0.1); border: 1px solid var(--teal); padding: 20px; border-radius: 15px; margin-bottom: 30px; }
+#adminPanel h3 { color: var(--green); margin-bottom: 15px; text-align: center; }
+#adminPanel input, #adminPanel textarea, #adminPanel select { width: 100%; padding: 10px; margin: 8px 0; background: #111; border: 1px solid var(--teal); color: var(--white); border-radius: 8px; font-family: 'Noto Serif Telugu', serif; }
+.add-btn { width: 100%; padding: 12px; background: linear-gradient(45deg, var(--green), var(--teal)); color: var(--black); border: none; font-weight: 600; cursor: pointer; border-radius: 8px; margin-top: 10px; }
+
 .category-section { display: none; }
 .category-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
-.cat-btn { padding: 12px 25px; border: 1px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; transition: 0.3s; font-family: 'Noto Serif Telugu', serif; font-size: 1rem; }
-.cat-btn.active,.cat-btn:hover { background: var(--gold); color: var(--black); }
+.cat-btn { padding: 12px 25px; border: 1px solid var(--teal); background: transparent; color: var(--teal); cursor: pointer; transition: 0.3s; }
+.cat-btn.active { background: linear-gradient(45deg, var(--green), var(--teal)); color: var(--black); font-weight: 600; }
 
 .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.card {
-  background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);
-  border: 1px solid rgba(212,175,55,0.2); border-radius: 15px;
-  overflow: hidden; transition: 0.4s; position: relative;
-}
-.card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212,175,55,0.2); }
-.card-img { width: 100%; height: 250px; object-fit: cover; }
-.card-content { padding: 25px; font-size: 1.2rem; line-height: 1.8; min-height: 120px; }
-.copy-btn {
-  width: 100%; background: var(--gold); color: var(--black);
-  border: none; padding: 12px; cursor: pointer; font-size: 1rem; font-weight: 600;
-  transition: 0.3s;
-}
-.copy-btn:hover { background: #c19b2e; }
-.back-btn { margin-bottom: 30px; }
+.card { background: linear-gradient(135deg, rgba(46,204,113,0.05), rgba(26,188,156,0.05)); backdrop-filter: blur(10px); border: 1px solid rgba(26,188,156,0.2); border-radius: 15px; overflow: hidden; transition: 0.4s; }
+.card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(26,188,156,0.3); }
+.card-img { width: 100%; height: 250px; object-fit: cover; border-bottom: 2px solid var(--teal); }
+.card-content { padding: 25px; font-size: 1.2rem; line-height: 1.8; min-height: 120px; color: var(--grey); }
+.copy-btn { width: 100%; background: linear-gradient(45deg, var(--green), var(--teal)); color: var(--black); border: none; padding: 12px; cursor: pointer; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -62,15 +67,34 @@ h1 { font-size: 3rem; color: var(--gold); text-align: center; font-family: 'Corm
 <div id="main">
   <h1>మౌనరాగం</h1>
 
+  <!-- ===== ADMIN PANEL - NUVVU IKADA ADD CHESTHAV ===== -->
+  <div id="adminPanel">
+    <h3>➕ Kotha Quote/Story Add Cheyyi</h3>
+    <select id="typeSelect">
+      <option value="quotes">Quote</option>
+      <option value="stories">Story</option>
+    </select>
+    <select id="catSelect">
+      <option value="love">Love</option>
+      <option value="sad">Sad</option>
+      <option value="broken">Heart Broken</option>
+      <option value="motivation">Motivational</option>
+      <option value="marriage">Marriage</option>
+    </select>
+    <input type="text" id="imgLink" placeholder="Image Link paste cheyyi - https://picsum.photos/400/250">
+    <textarea id="contentText" rows="3" placeholder="Nuvvu raayalsina Quote/Story ikkada"></textarea>
+    <button class="add-btn" onclick="addContent()">ADD & PUBLISH</button>
+    <p style="font-size:0.9rem; color:var(--grey); margin-top:10px;">Note: ADD kottagane kinda kanipistundi. Tarvatha Commit cheyyali</p>
+  </div>
+
   <div class="section-buttons">
     <button class="btn" onclick="openSection('quotes')">📜 Quotes</button>
     <button class="btn" onclick="openSection('stories')">📖 Stories</button>
   </div>
 
-  <!-- QUOTES SECTION -->
   <div id="quotes" class="category-section">
-    <button class="btn back-btn" onclick="backToHome()">← Back</button>
-    <h2 style="text-align:center; color:var(--gold); margin-bottom:20px;">Quotes</h2>
+    <button class="btn" onclick="backToHome()">← Back</button>
+    <h2 style="text-align:center; color:var(--teal);">Quotes</h2>
     <div class="category-buttons">
       <button class="cat-btn active" onclick="showCategory('quotes', 'love', this)">Love</button>
       <button class="cat-btn" onclick="showCategory('quotes', 'sad', this)">Sad</button>
@@ -81,10 +105,9 @@ h1 { font-size: 3rem; color: var(--gold); text-align: center; font-family: 'Corm
     <div id="quotes-content" class="content-grid"></div>
   </div>
 
-  <!-- STORIES SECTION -->
   <div id="stories" class="category-section">
-    <button class="btn back-btn" onclick="backToHome()">← Back</button>
-    <h2 style="text-align:center; color:var(--gold); margin-bottom:20px;">Stories</h2>
+    <button class="btn" onclick="backToHome()">← Back</button>
+    <h2 style="text-align:center; color:var(--teal);">Stories</h2>
     <div class="category-buttons">
       <button class="cat-btn active" onclick="showCategory('stories', 'love', this)">Love</button>
       <button class="cat-btn" onclick="showCategory('stories', 'sad', this)">Sad</button>
@@ -94,92 +117,41 @@ h1 { font-size: 3rem; color: var(--gold); text-align: center; font-family: 'Corm
     </div>
     <div id="stories-content" class="content-grid"></div>
   </div>
-
 </div>
 
 <script>
-// DATA - Image + Text. Nuvvu ee image paths marchuko
-const data = {
-  quotes: {
-    love: [
-      {img: "images/love1.jpg", text: "నేను ఎవరికీ చెప్పుకోలేని ఒక అందమైన రహస్యం నువ్వు."},
-      {img: "images/love2.jpg", text: "మితి మీరిన ఇష్టం... భయంకరమైన వ్యసనం."}
-    ],
-    sad: [
-      {img: "images/sad1.jpg", text: "రాత్రి పూట నిద్ర రాకపోతే మనసు బలహీనమైందని అర్థం."}
-    ],
-    broken: [
-      {img: "images/broken1.jpg", text: "వదిలేసి వెళ్ళిన వాళ్ళు గుర్తుకు వచ్చినప్పుడు... మౌనం ఒక్కటే సమాధానం."}
-    ],
-    motivation: [
-      {img: "images/motivation1.jpg", text: "పడిపోయిన ప్రతిసారి లేవడమే నిజమైన విజయం."}
-    ],
-    marriage: [
-      {img: "images/marriage1.jpg", text: "పెళ్లి అంటే రెండు మనసుల కలయిక... రెండు మౌనాల సంభాషణ."}
-    ]
-  },
-  stories: {
-    love: [
-      {img: "images/love-story1.jpg", text: "ఆ రోజు వానలో తడిసాం. మాటలు లేవు. కానీ కళ్ళతో వేయి కథలు చెప్పుకున్నాం."}
-    ],
-    sad: [
-      {img: "images/sad-story1.jpg", text: "ఆమె వెళ్ళిపోయింది. నా దగ్గర మిగిలింది కేవలం ఆమె నవ్వు గుర్తు మాత్రమే."}
-    ],
-    broken: [
-      {img: "images/broken-story1.jpg", text: "ప్రేమించాను. నమ్మాను. చివరికి నేనే ఒక కథ అయిపోయాను."}
-    ],
-    motivation: [
-      {img: "images/motivation-story1.jpg", text: "ఒంటరిగా పోరాడు. ఒకరోజు నీ కథ ఎవరికో స్ఫూర్తి అవుతుంది."}
-    ],
-    marriage: [
-      {img: "images/marriage-story1.jpg", text: "మా పెళ్లి పెద్దది కాదు. కానీ మా ప్రేమ మాత్రం చాలా పెద్దది."}
-    ]
-  }
-};
+let data = { quotes: { love: [], sad: [], broken: [], motivation: [], marriage: [] }, stories: { love: [], sad: [], broken: [], motivation: [], marriage: [] } };
 
 setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 2000);
+function enterSite() { document.getElementById('intro').style.display = 'none'; document.getElementById('main').style.display = 'block'; }
+function openSection(s) { document.querySelector('.section-buttons').style.display = 'none'; document.getElementById(s).style.display = 'block'; showCategory(s, 'love', document.querySelector(`#${s}.cat-btn`)); }
+function backToHome() { document.querySelector('.section-buttons').style.display = 'flex'; document.querySelectorAll('.category-section').forEach(s => s.style.display = 'none'); }
 
-function enterSite() {
-  document.getElementById('intro').style.display = 'none';
-  document.getElementById('main').style.display = 'block';
+// ===== NUVVU ADD CHESE FUNCTION =====
+function addContent() {
+  let type = document.getElementById('typeSelect').value;
+  let cat = document.getElementById('catSelect').value;
+  let img = document.getElementById('imgLink').value || "https://picsum.photos/400/250";
+  let text = document.getElementById('contentText').value;
+
+  if(text == "") { alert("Content raayandi anna"); return; }
+
+  data[type][cat].push({img: img, text: text});
+  document.getElementById('contentText').value = "";
+  alert("Add ayyindi! Ippudu site lo chudu. Commit cheyyali ante nenu cheptha");
+  showCategory(type, cat, document.querySelector(`#${type}.cat-btn.active`));
 }
 
-function openSection(section) {
-  document.querySelector('.section-buttons').style.display = 'none';
-  document.getElementById(section).style.display = 'block';
-  showCategory(section, 'love', document.querySelector(`#${section} .cat-btn`));
-}
-
-function backToHome() {
-  document.querySelector('.section-buttons').style.display = 'flex';
-  document.querySelectorAll('.category-section').forEach(s => s.style.display = 'none');
-}
-
-function showCategory(type, category, btn) {
-  document.querySelectorAll(`#${type} .cat-btn`).forEach(b => b.classList.remove('active'));
+function showCategory(type, cat, btn) {
+  document.querySelectorAll(`#${type}.cat-btn`).forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
-  const container = document.getElementById(`${type}-content`);
-  container.innerHTML = '';
-
-  data[type][category].forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${item.img}" class="card-img" alt="${category}">
-      <div class="card-content">${item.text}</div>
-      <button class="copy-btn" onclick="copyText(this)">📋 Copy Text</button>
-    `;
-    container.appendChild(card);
+  const c = document.getElementById(`${type}-content`);
+  c.innerHTML = '';
+  data[type][cat].forEach(i => {
+    c.innerHTML += `<div class="card"><img src="${i.img}" class="card-img"><div class="card-content">${i.text}</div><button class="copy-btn" onclick="copyText(this)">📋 Copy</button></div>`
   });
 }
-
-function copyText(btn) {
-  const text = btn.parentElement.querySelector('.card-content').innerText;
-  navigator.clipboard.writeText(text);
-  btn.innerText = '✓ Copied!';
-  setTimeout(() => { btn.innerText = '📋 Copy Text'; }, 1500);
-}
+function copyText(btn) { navigator.clipboard.writeText(btn.parentElement.querySelector('.card-content').innerText); btn.innerText = '✓ Copied!'; setTimeout(() => { btn.innerText = '📋 Copy'; }, 1500); }
 </script>
 </body>
 </html>
